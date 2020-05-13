@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtAppMaConfigMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    last_modified_time	lastModifiedTime,
+    remark	remark,
+    aes_key	aesKey,
+    aid	aid,
+    app_id	appId,
+    app_key	appKey,
+    app_no	appNo,
+    ma_type	maType,
+    msg_data_format	msgDataFormat,
+    secret	secret,
+    token	token
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtAppMaConfig" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_app_ma_config
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_app_ma_config
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtAppMaConfig" >
+    insert into ot_app_ma_config
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			aes_key,
+			aid,
+			app_id,
+			app_key,
+			app_no,
+			ma_type,
+			msg_data_format,
+			secret,
+			token
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{lastModifiedTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{aesKey,jdbcType=VARCHAR},
+			#{aid,jdbcType=VARCHAR},
+			#{appId,jdbcType=VARCHAR},
+			#{appKey,jdbcType=VARCHAR},
+			#{appNo,jdbcType=VARCHAR},
+			#{maType,jdbcType=VARCHAR},
+			#{msgDataFormat,jdbcType=VARCHAR},
+			#{secret,jdbcType=VARCHAR},
+			#{token,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_app_ma_config
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="aesKey != null">
+				aes_key = #{aesKey,jdbcType=VARCHAR},
+			</if>
+			<if test="aid != null">
+				aid = #{aid,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				app_id = #{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="appKey != null">
+				app_key = #{appKey,jdbcType=VARCHAR},
+			</if>
+			<if test="appNo != null">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="maType != null">
+				ma_type = #{maType,jdbcType=VARCHAR},
+			</if>
+			<if test="msgDataFormat != null">
+				msg_data_format = #{msgDataFormat,jdbcType=VARCHAR},
+			</if>
+			<if test="secret != null">
+				secret = #{secret,jdbcType=VARCHAR},
+			</if>
+			<if test="token != null">
+				token = #{token,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtAppMaConfig" id="updateByPK" >
+    	update ot_app_ma_config
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="aesKey != null and aesKey != ''">
+				aes_key = #{aesKey,jdbcType=VARCHAR},
+			</if>
+			<if test="aid != null and aid != ''">
+				aid = #{aid,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null and appId != ''">
+				app_id = #{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="appKey != null and appKey != ''">
+				app_key = #{appKey,jdbcType=VARCHAR},
+			</if>
+			<if test="appNo != null and appNo != ''">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="maType != null and maType != ''">
+				ma_type = #{maType,jdbcType=VARCHAR},
+			</if>
+			<if test="msgDataFormat != null and msgDataFormat != ''">
+				msg_data_format = #{msgDataFormat,jdbcType=VARCHAR},
+			</if>
+			<if test="secret != null and secret != ''">
+				secret = #{secret,jdbcType=VARCHAR},
+			</if>
+			<if test="token != null and token != ''">
+				token = #{token,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_app_ma_config
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="aesKey != null and aesKey != ''">
+				and aes_key = #{aesKey,jdbcType=VARCHAR}
+			</if>
+			<if test="aid != null and aid != ''">
+				and aid = #{aid,jdbcType=VARCHAR}
+			</if>
+			<if test="appId != null and appId != ''">
+				and app_id = #{appId,jdbcType=VARCHAR}
+			</if>
+			<if test="appKey != null and appKey != ''">
+				and app_key = #{appKey,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="msgDataFormat != null and msgDataFormat != ''">
+				and msg_data_format = #{msgDataFormat,jdbcType=VARCHAR}
+			</if>
+			<if test="secret != null and secret != ''">
+				and secret = #{secret,jdbcType=VARCHAR}
+			</if>
+			<if test="token != null and token != ''">
+				and token = #{token,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtAppMaConfig">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_app_ma_config
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="aesKey != null and aesKey != ''">
+				and aes_key = #{aesKey,jdbcType=VARCHAR}
+			</if>
+			<if test="aid != null and aid != ''">
+				and aid = #{aid,jdbcType=VARCHAR}
+			</if>
+			<if test="appId != null and appId != ''">
+				and app_id = #{appId,jdbcType=VARCHAR}
+			</if>
+			<if test="appKey != null and appKey != ''">
+				and app_key = #{appKey,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="msgDataFormat != null and msgDataFormat != ''">
+				and msg_data_format = #{msgDataFormat,jdbcType=VARCHAR}
+			</if>
+			<if test="secret != null and secret != ''">
+				and secret = #{secret,jdbcType=VARCHAR}
+			</if>
+			<if test="token != null and token != ''">
+				and token = #{token,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtAppMaConfig">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_app_ma_config
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="aesKey != null and aesKey != ''">
+				and aes_key = #{aesKey,jdbcType=VARCHAR}
+			</if>
+			<if test="aid != null and aid != ''">
+				and aid = #{aid,jdbcType=VARCHAR}
+			</if>
+			<if test="appId != null and appId != ''">
+				and app_id = #{appId,jdbcType=VARCHAR}
+			</if>
+			<if test="appKey != null and appKey != ''">
+				and app_key = #{appKey,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="msgDataFormat != null and msgDataFormat != ''">
+				and msg_data_format = #{msgDataFormat,jdbcType=VARCHAR}
+			</if>
+			<if test="secret != null and secret != ''">
+				and secret = #{secret,jdbcType=VARCHAR}
+			</if>
+			<if test="token != null and token != ''">
+				and token = #{token,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_app_ma_config where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_app_ma_config
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			aes_key,
+			aid,
+			app_id,
+			app_key,
+			app_no,
+			ma_type,
+			msg_data_format,
+			secret,
+			token
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.lastModifiedTime},
+			#{item.remark},
+			#{item.aesKey},
+			#{item.aid},
+			#{item.appId},
+			#{item.appKey},
+			#{item.appNo},
+			#{item.maType},
+			#{item.msgDataFormat},
+			#{item.secret},
+			#{item.token}
+		)
+		</foreach>
+	</insert>
+</mapper>

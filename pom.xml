@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.onlythinking</groupId>
+    <artifactId>ot-server-parent</artifactId>
+    <version>1.0</version>
+  </parent>
+
+  <groupId>com.onlythinking.shop</groupId>
+  <artifactId>shop-server</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>shop-server</name>
+  <description>Parent</description>
+
+  <properties>
+    <jjwt.version>0.9.1</jjwt.version>
+    <quartz.version>2.3.0</quartz.version>
+    <pinyin4j.version>2.5.0</pinyin4j.version>
+    <jquery.version>1.8.3</jquery.version>
+    <nekohtml.version>1.9.22</nekohtml.version>
+    <!--Third lib-->
+    <ot-mybatis-generator.version>1.0</ot-mybatis-generator.version>
+    <ot-commons.version>1.0</ot-commons.version>
+    <app-oss-starter.version>1.0</app-oss-starter.version>
+    <shiro-spring-boot-starter.version>1.4.0</shiro-spring-boot-starter.version>
+    <logbook-spring-boot-starter.version>1.9.0</logbook-spring-boot-starter.version>
+
+    <!--微信相关-->
+    <weixin-java-miniapp.version>3.7.0</weixin-java-miniapp.version>
+    <weixin-java-mp.version>3.7.0</weixin-java-mp.version>
+    <weixin-java-pay.version>3.7.0</weixin-java-pay.version>
+    <spring.profiles.active>default</spring.profiles.active>
+
+  </properties>
+
+  <modules>
+    <module>shop-server-api</module>
+    <module>shop-server-app</module>
+    <module>shop-server-mgt</module>
+  </modules>
+
+  <repositories>
+    <repository>
+      <id>github</id>
+      <name>github nexus</name>
+      <url>https://maven.pkg.github.com/cuteJ/ot-server-parent</url>
+    </repository>
+  </repositories>
+
+</project>

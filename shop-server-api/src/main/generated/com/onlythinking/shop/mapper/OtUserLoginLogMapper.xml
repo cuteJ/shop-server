@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtUserLoginLogMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    remark	remark,
+    app_no	appNo,
+    ip_geo	ipGeo,
+    login_ip	loginIp,
+    ma_type	maType,
+    nick_name	nickName,
+    uid	uid,
+    unique_key	uniqueKey
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtUserLoginLog" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_user_login_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_user_login_log
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtUserLoginLog" >
+    insert into ot_user_login_log
+		(
+			id,
+			created_time,
+			remark,
+			app_no,
+			ip_geo,
+			login_ip,
+			ma_type,
+			nick_name,
+			uid,
+			unique_key
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{appNo,jdbcType=VARCHAR},
+			#{ipGeo,jdbcType=VARCHAR},
+			#{loginIp,jdbcType=VARCHAR},
+			#{maType,jdbcType=VARCHAR},
+			#{nickName,jdbcType=VARCHAR},
+			#{uid,jdbcType=VARCHAR},
+			#{uniqueKey,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_user_login_log
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="appNo != null">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="ipGeo != null">
+				ip_geo = #{ipGeo,jdbcType=VARCHAR},
+			</if>
+			<if test="loginIp != null">
+				login_ip = #{loginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="maType != null">
+				ma_type = #{maType,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				nick_name = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="uid != null">
+				uid = #{uid,jdbcType=VARCHAR},
+			</if>
+			<if test="uniqueKey != null">
+				unique_key = #{uniqueKey,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtUserLoginLog" id="updateByPK" >
+    	update ot_user_login_log
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="appNo != null and appNo != ''">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="ipGeo != null and ipGeo != ''">
+				ip_geo = #{ipGeo,jdbcType=VARCHAR},
+			</if>
+			<if test="loginIp != null and loginIp != ''">
+				login_ip = #{loginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="maType != null and maType != ''">
+				ma_type = #{maType,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null and nickName != ''">
+				nick_name = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="uid != null and uid != ''">
+				uid = #{uid,jdbcType=VARCHAR},
+			</if>
+			<if test="uniqueKey != null and uniqueKey != ''">
+				unique_key = #{uniqueKey,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_user_login_log
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="ipGeo != null and ipGeo != ''">
+				and ip_geo = #{ipGeo,jdbcType=VARCHAR}
+			</if>
+			<if test="loginIp != null and loginIp != ''">
+				and login_ip = #{loginIp,jdbcType=VARCHAR}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and nick_name = #{nickName,jdbcType=VARCHAR}
+			</if>
+			<if test="uid != null and uid != ''">
+				and uid = #{uid,jdbcType=VARCHAR}
+			</if>
+			<if test="uniqueKey != null and uniqueKey != ''">
+				and unique_key = #{uniqueKey,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtUserLoginLog">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_user_login_log
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="ipGeo != null and ipGeo != ''">
+				and ip_geo = #{ipGeo,jdbcType=VARCHAR}
+			</if>
+			<if test="loginIp != null and loginIp != ''">
+				and login_ip = #{loginIp,jdbcType=VARCHAR}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and nick_name = #{nickName,jdbcType=VARCHAR}
+			</if>
+			<if test="uid != null and uid != ''">
+				and uid = #{uid,jdbcType=VARCHAR}
+			</if>
+			<if test="uniqueKey != null and uniqueKey != ''">
+				and unique_key = #{uniqueKey,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtUserLoginLog">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_user_login_log
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="ipGeo != null and ipGeo != ''">
+				and ip_geo = #{ipGeo,jdbcType=VARCHAR}
+			</if>
+			<if test="loginIp != null and loginIp != ''">
+				and login_ip = #{loginIp,jdbcType=VARCHAR}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and nick_name = #{nickName,jdbcType=VARCHAR}
+			</if>
+			<if test="uid != null and uid != ''">
+				and uid = #{uid,jdbcType=VARCHAR}
+			</if>
+			<if test="uniqueKey != null and uniqueKey != ''">
+				and unique_key = #{uniqueKey,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_user_login_log where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_user_login_log
+		(
+			id,
+			created_time,
+			remark,
+			app_no,
+			ip_geo,
+			login_ip,
+			ma_type,
+			nick_name,
+			uid,
+			unique_key
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.remark},
+			#{item.appNo},
+			#{item.ipGeo},
+			#{item.loginIp},
+			#{item.maType},
+			#{item.nickName},
+			#{item.uid},
+			#{item.uniqueKey}
+		)
+		</foreach>
+	</insert>
+</mapper>

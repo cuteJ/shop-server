@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtSysAuthorityMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    last_modified_time	lastModifiedTime,
+    remark	remark,
+    action	action,
+    authority_name	authorityName,
+    by_order	byOrder,
+    domain	domain,
+    module	module,
+    parent_id	parentId
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtSysAuthority" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_sys_authority
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_sys_authority
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtSysAuthority" >
+    insert into ot_sys_authority
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			action,
+			authority_name,
+			by_order,
+			domain,
+			module,
+			parent_id
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{lastModifiedTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{action,jdbcType=VARCHAR},
+			#{authorityName,jdbcType=VARCHAR},
+			#{byOrder,jdbcType=INTEGER},
+			#{domain,jdbcType=VARCHAR},
+			#{module,jdbcType=VARCHAR},
+			#{parentId,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_sys_authority
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="action != null">
+				action = #{action,jdbcType=VARCHAR},
+			</if>
+			<if test="authorityName != null">
+				authority_name = #{authorityName,jdbcType=VARCHAR},
+			</if>
+			<if test="byOrder != null">
+				by_order = #{byOrder,jdbcType=INTEGER},
+			</if>
+			<if test="domain != null">
+				domain = #{domain,jdbcType=VARCHAR},
+			</if>
+			<if test="module != null">
+				module = #{module,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtSysAuthority" id="updateByPK" >
+    	update ot_sys_authority
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="action != null and action != ''">
+				action = #{action,jdbcType=VARCHAR},
+			</if>
+			<if test="authorityName != null and authorityName != ''">
+				authority_name = #{authorityName,jdbcType=VARCHAR},
+			</if>
+			<if test="byOrder != null">
+				by_order = #{byOrder,jdbcType=INTEGER},
+			</if>
+			<if test="domain != null and domain != ''">
+				domain = #{domain,jdbcType=VARCHAR},
+			</if>
+			<if test="module != null and module != ''">
+				module = #{module,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null and parentId != ''">
+				parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_sys_authority
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="action != null and action != ''">
+				and action = #{action,jdbcType=VARCHAR}
+			</if>
+			<if test="authorityName != null and authorityName != ''">
+				and authority_name = #{authorityName,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="domain != null and domain != ''">
+				and domain = #{domain,jdbcType=VARCHAR}
+			</if>
+			<if test="module != null and module != ''">
+				and module = #{module,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysAuthority">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_authority
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="action != null and action != ''">
+				and action = #{action,jdbcType=VARCHAR}
+			</if>
+			<if test="authorityName != null and authorityName != ''">
+				and authority_name = #{authorityName,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="domain != null and domain != ''">
+				and domain = #{domain,jdbcType=VARCHAR}
+			</if>
+			<if test="module != null and module != ''">
+				and module = #{module,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysAuthority">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_authority
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="action != null and action != ''">
+				and action = #{action,jdbcType=VARCHAR}
+			</if>
+			<if test="authorityName != null and authorityName != ''">
+				and authority_name = #{authorityName,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="domain != null and domain != ''">
+				and domain = #{domain,jdbcType=VARCHAR}
+			</if>
+			<if test="module != null and module != ''">
+				and module = #{module,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_sys_authority where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_sys_authority
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			action,
+			authority_name,
+			by_order,
+			domain,
+			module,
+			parent_id
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.lastModifiedTime},
+			#{item.remark},
+			#{item.action},
+			#{item.authorityName},
+			#{item.byOrder},
+			#{item.domain},
+			#{item.module},
+			#{item.parentId}
+		)
+		</foreach>
+	</insert>
+</mapper>

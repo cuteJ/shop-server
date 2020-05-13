@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtSysMenuMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    last_modified_time	lastModifiedTime,
+    remark	remark,
+    by_order	byOrder,
+    component	component,
+    hidden	hidden,
+    meta	meta,
+    parent_id	parentId,
+    path	path,
+    redirect	redirect,
+    always_show	alwaysShow
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtSysMenu" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtSysMenu" >
+    insert into ot_sys_menu
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			by_order,
+			component,
+			hidden,
+			meta,
+			parent_id,
+			path,
+			redirect,
+			always_show
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{lastModifiedTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{byOrder,jdbcType=INTEGER},
+			#{component,jdbcType=VARCHAR},
+			#{hidden,jdbcType=BIT},
+			#{meta,jdbcType=VARCHAR},
+			#{parentId,jdbcType=VARCHAR},
+			#{path,jdbcType=VARCHAR},
+			#{redirect,jdbcType=VARCHAR},
+			#{alwaysShow,jdbcType=BIT}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_sys_menu
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="byOrder != null">
+				by_order = #{byOrder,jdbcType=INTEGER},
+			</if>
+			<if test="component != null">
+				component = #{component,jdbcType=VARCHAR},
+			</if>
+			<if test="hidden != null">
+				hidden = #{hidden,jdbcType=BIT},
+			</if>
+			<if test="meta != null">
+				meta = #{meta,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null">
+				path = #{path,jdbcType=VARCHAR},
+			</if>
+			<if test="redirect != null">
+				redirect = #{redirect,jdbcType=VARCHAR},
+			</if>
+			<if test="alwaysShow != null">
+				always_show = #{alwaysShow,jdbcType=BIT}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtSysMenu" id="updateByPK" >
+    	update ot_sys_menu
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="byOrder != null">
+				by_order = #{byOrder,jdbcType=INTEGER},
+			</if>
+			<if test="component != null and component != ''">
+				component = #{component,jdbcType=VARCHAR},
+			</if>
+			<if test="hidden != null">
+				hidden = #{hidden,jdbcType=BIT},
+			</if>
+			<if test="meta != null and meta != ''">
+				meta = #{meta,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null and parentId != ''">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null and path != ''">
+				path = #{path,jdbcType=VARCHAR},
+			</if>
+			<if test="redirect != null and redirect != ''">
+				redirect = #{redirect,jdbcType=VARCHAR},
+			</if>
+			<if test="alwaysShow != null">
+				always_show = #{alwaysShow,jdbcType=BIT}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_sys_menu
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="component != null and component != ''">
+				and component = #{component,jdbcType=VARCHAR}
+			</if>
+			<if test="hidden != null">
+				and hidden = #{hidden,jdbcType=BIT}
+			</if>
+			<if test="meta != null and meta != ''">
+				and meta = #{meta,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="path != null and path != ''">
+				and path = #{path,jdbcType=VARCHAR}
+			</if>
+			<if test="redirect != null and redirect != ''">
+				and redirect = #{redirect,jdbcType=VARCHAR}
+			</if>
+			<if test="alwaysShow != null">
+				and always_show = #{alwaysShow,jdbcType=BIT}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysMenu">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_menu
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="component != null and component != ''">
+				and component = #{component,jdbcType=VARCHAR}
+			</if>
+			<if test="hidden != null">
+				and hidden = #{hidden,jdbcType=BIT}
+			</if>
+			<if test="meta != null and meta != ''">
+				and meta = #{meta,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="path != null and path != ''">
+				and path = #{path,jdbcType=VARCHAR}
+			</if>
+			<if test="redirect != null and redirect != ''">
+				and redirect = #{redirect,jdbcType=VARCHAR}
+			</if>
+			<if test="alwaysShow != null">
+				and always_show = #{alwaysShow,jdbcType=BIT}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysMenu">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_menu
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="component != null and component != ''">
+				and component = #{component,jdbcType=VARCHAR}
+			</if>
+			<if test="hidden != null">
+				and hidden = #{hidden,jdbcType=BIT}
+			</if>
+			<if test="meta != null and meta != ''">
+				and meta = #{meta,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="path != null and path != ''">
+				and path = #{path,jdbcType=VARCHAR}
+			</if>
+			<if test="redirect != null and redirect != ''">
+				and redirect = #{redirect,jdbcType=VARCHAR}
+			</if>
+			<if test="alwaysShow != null">
+				and always_show = #{alwaysShow,jdbcType=BIT}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_sys_menu where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_sys_menu
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			by_order,
+			component,
+			hidden,
+			meta,
+			parent_id,
+			path,
+			redirect,
+			always_show
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.lastModifiedTime},
+			#{item.remark},
+			#{item.byOrder},
+			#{item.component},
+			#{item.hidden},
+			#{item.meta},
+			#{item.parentId},
+			#{item.path},
+			#{item.redirect},
+			#{item.alwaysShow}
+		)
+		</foreach>
+	</insert>
+</mapper>

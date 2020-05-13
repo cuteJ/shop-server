@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtRegionMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    depth	depth,
+    depth_name	depthName,
+    first_letter	firstLetter,
+    jian_pin	jianPin,
+    name	name,
+    parent_id	parentId,
+    pin_yin	pinYin
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtRegion" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_region
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_region
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtRegion" >
+    insert into ot_region
+		(
+			id,
+			depth,
+			depth_name,
+			first_letter,
+			jian_pin,
+			name,
+			parent_id,
+			pin_yin
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{depth,jdbcType=INTEGER},
+			#{depthName,jdbcType=VARCHAR},
+			#{firstLetter,jdbcType=VARCHAR},
+			#{jianPin,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{parentId,jdbcType=VARCHAR},
+			#{pinYin,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_region
+			<set>
+			<if test="depth != null">
+				depth = #{depth,jdbcType=INTEGER},
+			</if>
+			<if test="depthName != null">
+				depth_name = #{depthName,jdbcType=VARCHAR},
+			</if>
+			<if test="firstLetter != null">
+				first_letter = #{firstLetter,jdbcType=VARCHAR},
+			</if>
+			<if test="jianPin != null">
+				jian_pin = #{jianPin,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="pinYin != null">
+				pin_yin = #{pinYin,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtRegion" id="updateByPK" >
+    	update ot_region
+			<set>
+			<if test="depth != null">
+				depth = #{depth,jdbcType=INTEGER},
+			</if>
+			<if test="depthName != null and depthName != ''">
+				depth_name = #{depthName,jdbcType=VARCHAR},
+			</if>
+			<if test="firstLetter != null and firstLetter != ''">
+				first_letter = #{firstLetter,jdbcType=VARCHAR},
+			</if>
+			<if test="jianPin != null and jianPin != ''">
+				jian_pin = #{jianPin,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name != ''">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null and parentId != ''">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="pinYin != null and pinYin != ''">
+				pin_yin = #{pinYin,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_region
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="depth != null">
+				and depth = #{depth,jdbcType=INTEGER}
+			</if>
+			<if test="depthName != null and depthName != ''">
+				and depth_name = #{depthName,jdbcType=VARCHAR}
+			</if>
+			<if test="firstLetter != null and firstLetter != ''">
+				and first_letter = #{firstLetter,jdbcType=VARCHAR}
+			</if>
+			<if test="jianPin != null and jianPin != ''">
+				and jian_pin = #{jianPin,jdbcType=VARCHAR}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="pinYin != null and pinYin != ''">
+				and pin_yin = #{pinYin,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtRegion">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_region
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="depth != null">
+				and depth = #{depth,jdbcType=INTEGER}
+			</if>
+			<if test="depthName != null and depthName != ''">
+				and depth_name = #{depthName,jdbcType=VARCHAR}
+			</if>
+			<if test="firstLetter != null and firstLetter != ''">
+				and first_letter = #{firstLetter,jdbcType=VARCHAR}
+			</if>
+			<if test="jianPin != null and jianPin != ''">
+				and jian_pin = #{jianPin,jdbcType=VARCHAR}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="pinYin != null and pinYin != ''">
+				and pin_yin = #{pinYin,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtRegion">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_region
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="depth != null">
+				and depth = #{depth,jdbcType=INTEGER}
+			</if>
+			<if test="depthName != null and depthName != ''">
+				and depth_name = #{depthName,jdbcType=VARCHAR}
+			</if>
+			<if test="firstLetter != null and firstLetter != ''">
+				and first_letter = #{firstLetter,jdbcType=VARCHAR}
+			</if>
+			<if test="jianPin != null and jianPin != ''">
+				and jian_pin = #{jianPin,jdbcType=VARCHAR}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="pinYin != null and pinYin != ''">
+				and pin_yin = #{pinYin,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_region where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_region
+		(
+			id,
+			depth,
+			depth_name,
+			first_letter,
+			jian_pin,
+			name,
+			parent_id,
+			pin_yin
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.depth},
+			#{item.depthName},
+			#{item.firstLetter},
+			#{item.jianPin},
+			#{item.name},
+			#{item.parentId},
+			#{item.pinYin}
+		)
+		</foreach>
+	</insert>
+</mapper>

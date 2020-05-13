@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtAppBrandMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    last_modified_time	lastModifiedTime,
+    remark	remark,
+    app_name	appName,
+    app_no	appNo,
+    app_desc	appDesc,
+    logo	logo
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtAppBrand" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_app_brand
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_app_brand
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtAppBrand" >
+    insert into ot_app_brand
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			app_name,
+			app_no,
+			app_desc,
+			logo
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{lastModifiedTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{appName,jdbcType=VARCHAR},
+			#{appNo,jdbcType=VARCHAR},
+			#{appDesc,jdbcType=VARCHAR},
+			#{logo,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_app_brand
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="appName != null">
+				app_name = #{appName,jdbcType=VARCHAR},
+			</if>
+			<if test="appNo != null">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="appDesc != null">
+				app_desc = #{appDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="logo != null">
+				logo = #{logo,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtAppBrand" id="updateByPK" >
+    	update ot_app_brand
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="appName != null and appName != ''">
+				app_name = #{appName,jdbcType=VARCHAR},
+			</if>
+			<if test="appNo != null and appNo != ''">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="appDesc != null and appDesc != ''">
+				app_desc = #{appDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="logo != null and logo != ''">
+				logo = #{logo,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_app_brand
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="appName != null and appName != ''">
+				and app_name = #{appName,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="appDesc != null and appDesc != ''">
+				and app_desc = #{appDesc,jdbcType=VARCHAR}
+			</if>
+			<if test="logo != null and logo != ''">
+				and logo = #{logo,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtAppBrand">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_app_brand
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="appName != null and appName != ''">
+				and app_name = #{appName,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="appDesc != null and appDesc != ''">
+				and app_desc = #{appDesc,jdbcType=VARCHAR}
+			</if>
+			<if test="logo != null and logo != ''">
+				and logo = #{logo,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtAppBrand">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_app_brand
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="appName != null and appName != ''">
+				and app_name = #{appName,jdbcType=VARCHAR}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="appDesc != null and appDesc != ''">
+				and app_desc = #{appDesc,jdbcType=VARCHAR}
+			</if>
+			<if test="logo != null and logo != ''">
+				and logo = #{logo,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_app_brand where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_app_brand
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			app_name,
+			app_no,
+			app_desc,
+			logo
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.lastModifiedTime},
+			#{item.remark},
+			#{item.appName},
+			#{item.appNo},
+			#{item.appDesc},
+			#{item.logo}
+		)
+		</foreach>
+	</insert>
+</mapper>

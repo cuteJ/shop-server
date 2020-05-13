@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtSysUserMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    last_modified_time	lastModifiedTime,
+    remark	remark,
+    active	active,
+    avatar	avatar,
+    email	email,
+    password	password,
+    phone_no	phoneNo,
+    real_name	realName,
+    username	username
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtSysUser" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_sys_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_sys_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtSysUser" >
+    insert into ot_sys_user
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			active,
+			avatar,
+			email,
+			password,
+			phone_no,
+			real_name,
+			username
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{lastModifiedTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{active,jdbcType=BIT},
+			#{avatar,jdbcType=VARCHAR},
+			#{email,jdbcType=VARCHAR},
+			#{password,jdbcType=VARCHAR},
+			#{phoneNo,jdbcType=VARCHAR},
+			#{realName,jdbcType=VARCHAR},
+			#{username,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_sys_user
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="active != null">
+				active = #{active,jdbcType=BIT},
+			</if>
+			<if test="avatar != null">
+				avatar = #{avatar,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNo != null">
+				phone_no = #{phoneNo,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				real_name = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtSysUser" id="updateByPK" >
+    	update ot_sys_user
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="active != null">
+				active = #{active,jdbcType=BIT},
+			</if>
+			<if test="avatar != null and avatar != ''">
+				avatar = #{avatar,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null and email != ''">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null and password != ''">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				phone_no = #{phoneNo,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null and realName != ''">
+				real_name = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null and username != ''">
+				username = #{username,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_sys_user
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="active != null">
+				and active = #{active,jdbcType=BIT}
+			</if>
+			<if test="avatar != null and avatar != ''">
+				and avatar = #{avatar,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				and phone_no = #{phoneNo,jdbcType=VARCHAR}
+			</if>
+			<if test="realName != null and realName != ''">
+				and real_name = #{realName,jdbcType=VARCHAR}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysUser">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_user
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="active != null">
+				and active = #{active,jdbcType=BIT}
+			</if>
+			<if test="avatar != null and avatar != ''">
+				and avatar = #{avatar,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				and phone_no = #{phoneNo,jdbcType=VARCHAR}
+			</if>
+			<if test="realName != null and realName != ''">
+				and real_name = #{realName,jdbcType=VARCHAR}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysUser">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_user
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="active != null">
+				and active = #{active,jdbcType=BIT}
+			</if>
+			<if test="avatar != null and avatar != ''">
+				and avatar = #{avatar,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email != ''">
+				and email = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				and phone_no = #{phoneNo,jdbcType=VARCHAR}
+			</if>
+			<if test="realName != null and realName != ''">
+				and real_name = #{realName,jdbcType=VARCHAR}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_sys_user where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_sys_user
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			active,
+			avatar,
+			email,
+			password,
+			phone_no,
+			real_name,
+			username
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.lastModifiedTime},
+			#{item.remark},
+			#{item.active},
+			#{item.avatar},
+			#{item.email},
+			#{item.password},
+			#{item.phoneNo},
+			#{item.realName},
+			#{item.username}
+		)
+		</foreach>
+	</insert>
+</mapper>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtSysApiListMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    last_modified_time	lastModifiedTime,
+    remark	remark,
+    api_name	apiName,
+    api_tag	apiTag,
+    api_url	apiUrl,
+    by_order	byOrder,
+    parent_id	parentId,
+    shiro_code	shiroCode
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtSysApiList" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_sys_api_list
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_sys_api_list
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtSysApiList" >
+    insert into ot_sys_api_list
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			api_name,
+			api_tag,
+			api_url,
+			by_order,
+			parent_id,
+			shiro_code
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{lastModifiedTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{apiName,jdbcType=VARCHAR},
+			#{apiTag,jdbcType=VARCHAR},
+			#{apiUrl,jdbcType=VARCHAR},
+			#{byOrder,jdbcType=INTEGER},
+			#{parentId,jdbcType=VARCHAR},
+			#{shiroCode,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_sys_api_list
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="apiName != null">
+				api_name = #{apiName,jdbcType=VARCHAR},
+			</if>
+			<if test="apiTag != null">
+				api_tag = #{apiTag,jdbcType=VARCHAR},
+			</if>
+			<if test="apiUrl != null">
+				api_url = #{apiUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="byOrder != null">
+				by_order = #{byOrder,jdbcType=INTEGER},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="shiroCode != null">
+				shiro_code = #{shiroCode,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtSysApiList" id="updateByPK" >
+    	update ot_sys_api_list
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="apiName != null and apiName != ''">
+				api_name = #{apiName,jdbcType=VARCHAR},
+			</if>
+			<if test="apiTag != null and apiTag != ''">
+				api_tag = #{apiTag,jdbcType=VARCHAR},
+			</if>
+			<if test="apiUrl != null and apiUrl != ''">
+				api_url = #{apiUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="byOrder != null">
+				by_order = #{byOrder,jdbcType=INTEGER},
+			</if>
+			<if test="parentId != null and parentId != ''">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="shiroCode != null and shiroCode != ''">
+				shiro_code = #{shiroCode,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_sys_api_list
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="apiName != null and apiName != ''">
+				and api_name = #{apiName,jdbcType=VARCHAR}
+			</if>
+			<if test="apiTag != null and apiTag != ''">
+				and api_tag = #{apiTag,jdbcType=VARCHAR}
+			</if>
+			<if test="apiUrl != null and apiUrl != ''">
+				and api_url = #{apiUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="shiroCode != null and shiroCode != ''">
+				and shiro_code = #{shiroCode,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysApiList">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_api_list
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="apiName != null and apiName != ''">
+				and api_name = #{apiName,jdbcType=VARCHAR}
+			</if>
+			<if test="apiTag != null and apiTag != ''">
+				and api_tag = #{apiTag,jdbcType=VARCHAR}
+			</if>
+			<if test="apiUrl != null and apiUrl != ''">
+				and api_url = #{apiUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="shiroCode != null and shiroCode != ''">
+				and shiro_code = #{shiroCode,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysApiList">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_sys_api_list
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="apiName != null and apiName != ''">
+				and api_name = #{apiName,jdbcType=VARCHAR}
+			</if>
+			<if test="apiTag != null and apiTag != ''">
+				and api_tag = #{apiTag,jdbcType=VARCHAR}
+			</if>
+			<if test="apiUrl != null and apiUrl != ''">
+				and api_url = #{apiUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="byOrder != null">
+				and by_order = #{byOrder,jdbcType=INTEGER}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				and parent_id = #{parentId,jdbcType=VARCHAR}
+			</if>
+			<if test="shiroCode != null and shiroCode != ''">
+				and shiro_code = #{shiroCode,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_sys_api_list where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_sys_api_list
+		(
+			id,
+			created_time,
+			last_modified_time,
+			remark,
+			api_name,
+			api_tag,
+			api_url,
+			by_order,
+			parent_id,
+			shiro_code
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.lastModifiedTime},
+			#{item.remark},
+			#{item.apiName},
+			#{item.apiTag},
+			#{item.apiUrl},
+			#{item.byOrder},
+			#{item.parentId},
+			#{item.shiroCode}
+		)
+		</foreach>
+	</insert>
+</mapper>

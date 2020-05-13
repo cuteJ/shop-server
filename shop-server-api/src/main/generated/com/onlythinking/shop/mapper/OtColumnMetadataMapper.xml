@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtColumnMetadataMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    column_name	columnName,
+    column_size	columnSize,
+    decimal_digits	decimalDigits,
+    not_null	notNull,
+    remarks	remarks,
+    table_id	tableId,
+    type_name	typeName
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtColumnMetadata" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_column_metadata
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_column_metadata
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtColumnMetadata" >
+    insert into ot_column_metadata
+		(
+			id,
+			column_name,
+			column_size,
+			decimal_digits,
+			not_null,
+			remarks,
+			table_id,
+			type_name
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{columnName,jdbcType=VARCHAR},
+			#{columnSize,jdbcType=INTEGER},
+			#{decimalDigits,jdbcType=INTEGER},
+			#{notNull,jdbcType=BIT},
+			#{remarks,jdbcType=VARCHAR},
+			#{tableId,jdbcType=VARCHAR},
+			#{typeName,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_column_metadata
+			<set>
+			<if test="columnName != null">
+				column_name = #{columnName,jdbcType=VARCHAR},
+			</if>
+			<if test="columnSize != null">
+				column_size = #{columnSize,jdbcType=INTEGER},
+			</if>
+			<if test="decimalDigits != null">
+				decimal_digits = #{decimalDigits,jdbcType=INTEGER},
+			</if>
+			<if test="notNull != null">
+				not_null = #{notNull,jdbcType=BIT},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="tableId != null">
+				table_id = #{tableId,jdbcType=VARCHAR},
+			</if>
+			<if test="typeName != null">
+				type_name = #{typeName,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtColumnMetadata" id="updateByPK" >
+    	update ot_column_metadata
+			<set>
+			<if test="columnName != null and columnName != ''">
+				column_name = #{columnName,jdbcType=VARCHAR},
+			</if>
+			<if test="columnSize != null">
+				column_size = #{columnSize,jdbcType=INTEGER},
+			</if>
+			<if test="decimalDigits != null">
+				decimal_digits = #{decimalDigits,jdbcType=INTEGER},
+			</if>
+			<if test="notNull != null">
+				not_null = #{notNull,jdbcType=BIT},
+			</if>
+			<if test="remarks != null and remarks != ''">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="tableId != null and tableId != ''">
+				table_id = #{tableId,jdbcType=VARCHAR},
+			</if>
+			<if test="typeName != null and typeName != ''">
+				type_name = #{typeName,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_column_metadata
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="columnName != null and columnName != ''">
+				and column_name = #{columnName,jdbcType=VARCHAR}
+			</if>
+			<if test="columnSize != null">
+				and column_size = #{columnSize,jdbcType=INTEGER}
+			</if>
+			<if test="decimalDigits != null">
+				and decimal_digits = #{decimalDigits,jdbcType=INTEGER}
+			</if>
+			<if test="notNull != null">
+				and not_null = #{notNull,jdbcType=BIT}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and remarks = #{remarks,jdbcType=VARCHAR}
+			</if>
+			<if test="tableId != null and tableId != ''">
+				and table_id = #{tableId,jdbcType=VARCHAR}
+			</if>
+			<if test="typeName != null and typeName != ''">
+				and type_name = #{typeName,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtColumnMetadata">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_column_metadata
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="columnName != null and columnName != ''">
+				and column_name = #{columnName,jdbcType=VARCHAR}
+			</if>
+			<if test="columnSize != null">
+				and column_size = #{columnSize,jdbcType=INTEGER}
+			</if>
+			<if test="decimalDigits != null">
+				and decimal_digits = #{decimalDigits,jdbcType=INTEGER}
+			</if>
+			<if test="notNull != null">
+				and not_null = #{notNull,jdbcType=BIT}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and remarks = #{remarks,jdbcType=VARCHAR}
+			</if>
+			<if test="tableId != null and tableId != ''">
+				and table_id = #{tableId,jdbcType=VARCHAR}
+			</if>
+			<if test="typeName != null and typeName != ''">
+				and type_name = #{typeName,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtColumnMetadata">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_column_metadata
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="columnName != null and columnName != ''">
+				and column_name = #{columnName,jdbcType=VARCHAR}
+			</if>
+			<if test="columnSize != null">
+				and column_size = #{columnSize,jdbcType=INTEGER}
+			</if>
+			<if test="decimalDigits != null">
+				and decimal_digits = #{decimalDigits,jdbcType=INTEGER}
+			</if>
+			<if test="notNull != null">
+				and not_null = #{notNull,jdbcType=BIT}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and remarks = #{remarks,jdbcType=VARCHAR}
+			</if>
+			<if test="tableId != null and tableId != ''">
+				and table_id = #{tableId,jdbcType=VARCHAR}
+			</if>
+			<if test="typeName != null and typeName != ''">
+				and type_name = #{typeName,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_column_metadata where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_column_metadata
+		(
+			id,
+			column_name,
+			column_size,
+			decimal_digits,
+			not_null,
+			remarks,
+			table_id,
+			type_name
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.columnName},
+			#{item.columnSize},
+			#{item.decimalDigits},
+			#{item.notNull},
+			#{item.remarks},
+			#{item.tableId},
+			#{item.typeName}
+		)
+		</foreach>
+	</insert>
+</mapper>

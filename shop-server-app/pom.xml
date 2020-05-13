@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>com.onlythinking.shop</groupId>
+    <artifactId>shop-server</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>shop-server-app</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>shop-server-api</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!--oss-->
+    <dependency>
+      <groupId>com.onlythinking.starter</groupId>
+      <artifactId>app-oss-starter</artifactId>
+      <version>${app-oss-starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.aliyun.oss</groupId>
+      <artifactId>aliyun-sdk-oss</artifactId>
+      <version>${aliyun-sdk-oss.version}</version>
+    </dependency>
+
+    <!--utils-->
+    <dependency>
+      <groupId>com.belerweb</groupId>
+      <artifactId>pinyin4j</artifactId>
+      <version>${pinyin4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.zalando</groupId>
+      <artifactId>logbook-spring-boot-starter</artifactId>
+      <version>${logbook-spring-boot-starter.version}</version>
+    </dependency>
+
+    <!--微信小程序SDK-->
+    <dependency>
+      <groupId>com.github.binarywang</groupId>
+      <artifactId>weixin-java-miniapp</artifactId>
+      <version>${weixin-java-miniapp.version}</version>
+    </dependency>
+    <!--微信公众号SDK-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.github.binarywang</groupId>-->
+    <!--      <artifactId>weixin-java-mp</artifactId>-->
+    <!--      <version>${weixin-java-mp.version}</version>-->
+    <!--    </dependency>-->
+    <!--微信支付SDK-->
+    <dependency>
+      <groupId>com.github.binarywang</groupId>
+      <artifactId>weixin-java-pay</artifactId>
+      <version>${weixin-java-pay.version}</version>
+    </dependency>
+
+    <!--App token-->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>${jjwt.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>

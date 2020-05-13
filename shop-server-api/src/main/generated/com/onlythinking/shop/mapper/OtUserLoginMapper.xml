@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtUserLoginMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    created_time	createdTime,
+    app_no	appNo,
+    last_modified_time	lastModifiedTime,
+    remark	remark,
+    avatar_url	avatarUrl,
+    city	city,
+    country	country,
+    gender	gender,
+    ma_type	maType,
+    nick_name	nickName,
+    openid	openid,
+    password	password,
+    phone_no	phoneNo,
+    province	province,
+    unionid	unionid,
+    username	username
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtUserLogin" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_user_login
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_user_login
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtUserLogin" >
+    insert into ot_user_login
+		(
+			id,
+			created_time,
+			app_no,
+			last_modified_time,
+			remark,
+			avatar_url,
+			city,
+			country,
+			gender,
+			ma_type,
+			nick_name,
+			openid,
+			password,
+			phone_no,
+			province,
+			unionid,
+			username
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{createdTime,jdbcType=TIMESTAMP},
+			#{appNo,jdbcType=VARCHAR},
+			#{lastModifiedTime,jdbcType=TIMESTAMP},
+			#{remark,jdbcType=VARCHAR},
+			#{avatarUrl,jdbcType=VARCHAR},
+			#{city,jdbcType=VARCHAR},
+			#{country,jdbcType=VARCHAR},
+			#{gender,jdbcType=INTEGER},
+			#{maType,jdbcType=VARCHAR},
+			#{nickName,jdbcType=VARCHAR},
+			#{openid,jdbcType=VARCHAR},
+			#{password,jdbcType=VARCHAR},
+			#{phoneNo,jdbcType=VARCHAR},
+			#{province,jdbcType=VARCHAR},
+			#{unionid,jdbcType=VARCHAR},
+			#{username,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_user_login
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="appNo != null">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="avatarUrl != null">
+				avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="country != null">
+				country = #{country,jdbcType=VARCHAR},
+			</if>
+			<if test="gender != null">
+				gender = #{gender,jdbcType=INTEGER},
+			</if>
+			<if test="maType != null">
+				ma_type = #{maType,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null">
+				nick_name = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="openid != null">
+				openid = #{openid,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNo != null">
+				phone_no = #{phoneNo,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				province = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="unionid != null">
+				unionid = #{unionid,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtUserLogin" id="updateByPK" >
+    	update ot_user_login
+			<set>
+			<if test="createdTime != null">
+				created_time = #{createdTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="appNo != null and appNo != ''">
+				app_no = #{appNo,jdbcType=VARCHAR},
+			</if>
+			<if test="lastModifiedTime != null">
+				last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="avatarUrl != null and avatarUrl != ''">
+				avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null and city != ''">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="country != null and country != ''">
+				country = #{country,jdbcType=VARCHAR},
+			</if>
+			<if test="gender != null">
+				gender = #{gender,jdbcType=INTEGER},
+			</if>
+			<if test="maType != null and maType != ''">
+				ma_type = #{maType,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null and nickName != ''">
+				nick_name = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="openid != null and openid != ''">
+				openid = #{openid,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null and password != ''">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				phone_no = #{phoneNo,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null and province != ''">
+				province = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="unionid != null and unionid != ''">
+				unionid = #{unionid,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null and username != ''">
+				username = #{username,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_user_login
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="avatarUrl != null and avatarUrl != ''">
+				and avatar_url = #{avatarUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="city != null and city != ''">
+				and city = #{city,jdbcType=VARCHAR}
+			</if>
+			<if test="country != null and country != ''">
+				and country = #{country,jdbcType=VARCHAR}
+			</if>
+			<if test="gender != null">
+				and gender = #{gender,jdbcType=INTEGER}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and nick_name = #{nickName,jdbcType=VARCHAR}
+			</if>
+			<if test="openid != null and openid != ''">
+				and openid = #{openid,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				and phone_no = #{phoneNo,jdbcType=VARCHAR}
+			</if>
+			<if test="province != null and province != ''">
+				and province = #{province,jdbcType=VARCHAR}
+			</if>
+			<if test="unionid != null and unionid != ''">
+				and unionid = #{unionid,jdbcType=VARCHAR}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtUserLogin">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_user_login
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="avatarUrl != null and avatarUrl != ''">
+				and avatar_url = #{avatarUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="city != null and city != ''">
+				and city = #{city,jdbcType=VARCHAR}
+			</if>
+			<if test="country != null and country != ''">
+				and country = #{country,jdbcType=VARCHAR}
+			</if>
+			<if test="gender != null">
+				and gender = #{gender,jdbcType=INTEGER}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and nick_name = #{nickName,jdbcType=VARCHAR}
+			</if>
+			<if test="openid != null and openid != ''">
+				and openid = #{openid,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				and phone_no = #{phoneNo,jdbcType=VARCHAR}
+			</if>
+			<if test="province != null and province != ''">
+				and province = #{province,jdbcType=VARCHAR}
+			</if>
+			<if test="unionid != null and unionid != ''">
+				and unionid = #{unionid,jdbcType=VARCHAR}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtUserLogin">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_user_login
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="createdTime != null">
+				and created_time = #{createdTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="appNo != null and appNo != ''">
+				and app_no = #{appNo,jdbcType=VARCHAR}
+			</if>
+			<if test="lastModifiedTime != null">
+				and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null and remark != ''">
+				and remark = #{remark,jdbcType=VARCHAR}
+			</if>
+			<if test="avatarUrl != null and avatarUrl != ''">
+				and avatar_url = #{avatarUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="city != null and city != ''">
+				and city = #{city,jdbcType=VARCHAR}
+			</if>
+			<if test="country != null and country != ''">
+				and country = #{country,jdbcType=VARCHAR}
+			</if>
+			<if test="gender != null">
+				and gender = #{gender,jdbcType=INTEGER}
+			</if>
+			<if test="maType != null and maType != ''">
+				and ma_type = #{maType,jdbcType=VARCHAR}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and nick_name = #{nickName,jdbcType=VARCHAR}
+			</if>
+			<if test="openid != null and openid != ''">
+				and openid = #{openid,jdbcType=VARCHAR}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password,jdbcType=VARCHAR}
+			</if>
+			<if test="phoneNo != null and phoneNo != ''">
+				and phone_no = #{phoneNo,jdbcType=VARCHAR}
+			</if>
+			<if test="province != null and province != ''">
+				and province = #{province,jdbcType=VARCHAR}
+			</if>
+			<if test="unionid != null and unionid != ''">
+				and unionid = #{unionid,jdbcType=VARCHAR}
+			</if>
+			<if test="username != null and username != ''">
+				and username = #{username,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_user_login where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_user_login
+		(
+			id,
+			created_time,
+			app_no,
+			last_modified_time,
+			remark,
+			avatar_url,
+			city,
+			country,
+			gender,
+			ma_type,
+			nick_name,
+			openid,
+			password,
+			phone_no,
+			province,
+			unionid,
+			username
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.createdTime},
+			#{item.appNo},
+			#{item.lastModifiedTime},
+			#{item.remark},
+			#{item.avatarUrl},
+			#{item.city},
+			#{item.country},
+			#{item.gender},
+			#{item.maType},
+			#{item.nickName},
+			#{item.openid},
+			#{item.password},
+			#{item.phoneNo},
+			#{item.province},
+			#{item.unionid},
+			#{item.username}
+		)
+		</foreach>
+	</insert>
+</mapper>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mapper.OtTableMetadataMapper" >
+  <sql id="Base_Column_List" >
+    id	id,
+    pk_name	pkName,
+    remarks	remarks,
+    table_name	tableName,
+    table_scheme	tableScheme,
+    table_type	tableType
+  </sql>
+  <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtTableMetadata" >
+    select 
+    <include refid="Base_Column_List" />
+    from ot_table_metadata
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete parameterType="java.lang.String" id="deleteByPK" >
+    delete from ot_table_metadata
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.onlythinking.shop.model.OtTableMetadata" >
+    insert into ot_table_metadata
+		(
+			id,
+			pk_name,
+			remarks,
+			table_name,
+			table_scheme,
+			table_type
+		)
+		values
+		(
+			#{id,jdbcType=VARCHAR},
+			#{pkName,jdbcType=VARCHAR},
+			#{remarks,jdbcType=VARCHAR},
+			#{tableName,jdbcType=VARCHAR},
+			#{tableScheme,jdbcType=VARCHAR},
+			#{tableType,jdbcType=VARCHAR}
+		)
+  </insert>
+  <update id="updateBySelective" parameterType="java.util.Map" >
+    	update ot_table_metadata
+			<set>
+			<if test="pkName != null">
+				pk_name = #{pkName,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="tableName != null">
+				table_name = #{tableName,jdbcType=VARCHAR},
+			</if>
+			<if test="tableScheme != null">
+				table_scheme = #{tableScheme,jdbcType=VARCHAR},
+			</if>
+			<if test="tableType != null">
+				table_type = #{tableType,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update parameterType="com.onlythinking.shop.model.OtTableMetadata" id="updateByPK" >
+    	update ot_table_metadata
+			<set>
+			<if test="pkName != null and pkName != ''">
+				pk_name = #{pkName,jdbcType=VARCHAR},
+			</if>
+			<if test="remarks != null and remarks != ''">
+				remarks = #{remarks,jdbcType=VARCHAR},
+			</if>
+			<if test="tableName != null and tableName != ''">
+				table_name = #{tableName,jdbcType=VARCHAR},
+			</if>
+			<if test="tableScheme != null and tableScheme != ''">
+				table_scheme = #{tableScheme,jdbcType=VARCHAR},
+			</if>
+			<if test="tableType != null and tableType != ''">
+				table_type = #{tableType,jdbcType=VARCHAR}
+			</if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="count" parameterType="java.util.Map" resultType="java.lang.Long">
+		select
+			count(0)
+		from ot_table_metadata
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="pkName != null and pkName != ''">
+				and pk_name = #{pkName,jdbcType=VARCHAR}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and remarks = #{remarks,jdbcType=VARCHAR}
+			</if>
+			<if test="tableName != null and tableName != ''">
+				and table_name = #{tableName,jdbcType=VARCHAR}
+			</if>
+			<if test="tableScheme != null and tableScheme != ''">
+				and table_scheme = #{tableScheme,jdbcType=VARCHAR}
+			</if>
+			<if test="tableType != null and tableType != ''">
+				and table_type = #{tableType,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtTableMetadata">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_table_metadata
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="pkName != null and pkName != ''">
+				and pk_name = #{pkName,jdbcType=VARCHAR}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and remarks = #{remarks,jdbcType=VARCHAR}
+			</if>
+			<if test="tableName != null and tableName != ''">
+				and table_name = #{tableName,jdbcType=VARCHAR}
+			</if>
+			<if test="tableScheme != null and tableScheme != ''">
+				and table_scheme = #{tableScheme,jdbcType=VARCHAR}
+			</if>
+			<if test="tableType != null and tableType != ''">
+				and table_type = #{tableType,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <select id="getList" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtTableMetadata">
+		select
+			<include refid="Base_Column_List"/>
+		from ot_table_metadata
+		<trim prefix="where" prefixOverrides="and |or ">
+			<if test="id != null and id != ''">
+				and id = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="pkName != null and pkName != ''">
+				and pk_name = #{pkName,jdbcType=VARCHAR}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				and remarks = #{remarks,jdbcType=VARCHAR}
+			</if>
+			<if test="tableName != null and tableName != ''">
+				and table_name = #{tableName,jdbcType=VARCHAR}
+			</if>
+			<if test="tableScheme != null and tableScheme != ''">
+				and table_scheme = #{tableScheme,jdbcType=VARCHAR}
+			</if>
+			<if test="tableType != null and tableType != ''">
+				and table_type = #{tableType,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+  <delete id="deleteInBatch" parameterType="java.util.List">
+		delete from ot_table_metadata where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+  <insert id="insertInBatch" parameterType="java.util.List">
+		insert into ot_table_metadata
+		(
+			id,
+			pk_name,
+			remarks,
+			table_name,
+			table_scheme,
+			table_type
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(
+			#{item.id},
+			#{item.pkName},
+			#{item.remarks},
+			#{item.tableName},
+			#{item.tableScheme},
+			#{item.tableType}
+		)
+		</foreach>
+	</insert>
+</mapper>
