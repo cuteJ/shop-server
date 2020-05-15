@@ -1,0 +1,6 @@
+ifndef::imagesdir[:imagesdir: images]
+image::logo.png[Logo,.right,24,24]
+
+项目地址
+
+https://github.com/cuteJ/shop-server[https://github.com/cuteJ/shop-server]

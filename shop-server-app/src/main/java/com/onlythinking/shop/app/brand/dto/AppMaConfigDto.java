@@ -1,5 +1,6 @@
 package com.onlythinking.shop.app.brand.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
@@ -9,6 +10,7 @@ import org.hibernate.validator.constraints.NotBlank;
  *
  * @author Li Xingping
  */
+@ApiModel("小程序配置")
 @Data
 public class AppMaConfigDto {
     /**

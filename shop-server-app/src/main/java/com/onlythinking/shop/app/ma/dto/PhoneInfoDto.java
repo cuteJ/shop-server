@@ -1,5 +1,6 @@
 package com.onlythinking.shop.app.ma.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,6 +11,7 @@ import lombok.ToString;
  *
  * @author Li Xingping
  */
+@ApiModel("小程序手机信息")
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Data

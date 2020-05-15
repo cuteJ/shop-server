@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlythinking.shop.mgt.core.mapper.ShiroRelamMapper">
+
+  <select id="findRoleCodes" parameterType="java.util.Map" resultType="java.lang.String">
+    SELECT
+        DISTINCT( a2.role_code )
+    FROM
+    ot_sys_user_role_rel a1
+    JOIN ot_sys_role a2 ON a1.role_id = a2.id
+    JOIN ot_sys_user_role_rel a3 ON a2.id = a3.role_id
+    JOIN ot_sys_user a4 ON a3.user_id = a4.id
+    <trim prefix="where" prefixOverrides="and | or ">
+        a2.status = '100000'
+      <if test="username != null and username != ''">
+        and a4.username = #{username}
+      </if>
+    </trim>
+  </select>
+
+  <select id="findPermissionsByRole" parameterType="java.util.Map" resultType="java.lang.String">
+    SELECT
+        DISTINCT( a1.id )
+    FROM
+        ot_sys_authority a1
+    LEFT JOIN ot_sys_role_authority_rel a2 ON a1.id = a2.authority_id
+    LEFT JOIN ot_sys_user_role_rel a3 ON a2.role_id = a3.role_id
+    LEFT JOIN ot_sys_user a4 ON a3.user_id = a4.id
+    LEFT JOIN ot_sys_role a6 ON a2.role_id = a6.id
+    <trim prefix="where" prefixOverrides="and | or ">
+        a6.status = '100000'
+      <if test="username != null and username != ''">
+        and a4.username = #{username}
+      </if>
+    </trim>
+  </select>
+
+  <select id="findPermissionsByMenu" parameterType="java.util.Map" resultType="java.lang.String">
+    SELECT
+        DISTINCT( a1.id )
+    FROM
+        ot_sys_authority a1
+    LEFT JOIN ot_sys_menu_authority_rel a2 ON a1.id = a2.authority_id
+    LEFT JOIN ot_sys_role_menu_rel a3 ON a2.menu_id = a3.menu_id
+    LEFT JOIN ot_sys_user_role_rel a4 ON a3.role_id = a4.role_id
+    LEFT JOIN ot_sys_user a5 ON a4.user_id = a5.id
+    LEFT JOIN ot_sys_role a6 ON a3.role_id = a6.id
+    <trim prefix="where" prefixOverrides="and | or ">
+        a6.status = '100000'
+      <if test="username != null and username != ''">
+        and a5.username = #{username}
+      </if>
+    </trim>
+  </select>
+
+  <select id="findMenus" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysMenu">
+    SELECT
+    DISTINCT
+    a1.id	id,
+    a1.created_time	createdTime,
+    a1.last_modified_time	lastModifiedTime,
+    a1.remark	remark,
+    a1.by_order	byOrder,
+    a1.component	component,
+    a1.hidden	hidden,
+    a1.meta	meta,
+    a1.parent_id	parentId,
+    a1.path	path,
+    a1.redirect	redirect,
+    a1.always_show	alwaysShow
+    FROM
+        ot_sys_menu a1
+    LEFT JOIN ot_sys_role_menu_rel a2 ON a1.id = a2.menu_id
+    LEFT JOIN ot_sys_user_role_rel a3 ON a2.role_id = a3.role_id
+    LEFT JOIN ot_sys_user a4 ON a3.user_id = a4.id
+    LEFT JOIN ot_sys_role a6 ON a2.role_id = a6.id
+    <trim prefix="where" prefixOverrides="and | or ">
+      a6.status = '100000'
+      <if test="username != null and username != ''">
+      and  a4.username = #{username}
+      </if>
+    </trim>
+  </select>
+</mapper>

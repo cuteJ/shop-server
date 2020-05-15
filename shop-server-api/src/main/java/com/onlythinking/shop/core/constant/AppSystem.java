@@ -13,6 +13,7 @@ public class AppSystem {
 
     // spring profiles
     public static final String SPRING_PROFILE_DOC = "apiDocs"; // 文档环境
+    public static final String SPRING_PROFILE_DEV = "dev"; // 开发环境环境
 
     // 系统用户
     public static final String OPERATOR_SYS = "system"; // 系统

@@ -1,0 +1,1 @@
+require 'rubysl/resolv-replace'

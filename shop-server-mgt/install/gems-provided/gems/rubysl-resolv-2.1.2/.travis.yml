@@ -1,0 +1,14 @@
+language: ruby
+env:
+  - RUBYLIB=lib
+  - RUBYLIB=
+script: mspec spec
+rvm:
+  - 2.1.0
+  - rbx-2
+matrix:
+  exclude:
+    - rvm: 2.1.0
+      env: RUBYLIB=lib
+    - rvm: rbx-2
+      env: RUBYLIB=

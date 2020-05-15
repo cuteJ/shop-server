@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.onlythinking.shop.mgt.system.mapper.InfraSelectDtoMapper">
+
+  <sql id="select_options_role">
+    id	`value`,
+    IF(status = '100000', 0, 1) disabled,
+    role_name	label
+  </sql>
+
+  <sql id="select_options_user">
+    username	`value`,
+    real_name	label
+  </sql>
+
+  <sql id="select_options_trigger">
+    id	`value`,
+    trigger_name	label
+  </sql>
+
+  <select id="getByTrigger" parameterType="map" resultType="com.onlythinking.shop.core.model.SelectOptions">
+    select
+    <include refid="select_options_trigger"/>
+    from ot_sys_job_trigger
+    <trim prefix="where" prefixOverrides="and |or ">
+      <if test="id != null and id != ''">
+        and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTime != null">
+        and created_time = #{createdTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="disabled != null">
+        and disabled = #{disabled,jdbcType=BIT}
+      </if>
+      <if test="lastModifiedTime != null">
+        and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null and remark != ''">
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="cron != null and cron != ''">
+        and cron = #{cron,jdbcType=VARCHAR}
+      </if>
+      <if test="interval != null">
+        and _interval = #{interval,jdbcType=INTEGER}
+      </if>
+      <if test="intervalUnit != null and intervalUnit != ''">
+        and interval_unit = #{intervalUnit,jdbcType=VARCHAR}
+      </if>
+      <if test="repeatCount != null">
+        and repeat_count = #{repeatCount,jdbcType=INTEGER}
+      </if>
+      <if test="triggerName != null and triggerName != ''">
+        and trigger_name = #{triggerName,jdbcType=VARCHAR}
+      </if>
+      <if test="triggerType != null and triggerType != ''">
+        and trigger_type = #{triggerType,jdbcType=VARCHAR}
+      </if>
+      <if test="daysOfWeek != null and daysOfWeek != ''">
+        and days_of_week = #{daysOfWeek,jdbcType=VARCHAR}
+      </if>
+      <if test="endTimeOfDay != null and endTimeOfDay != ''">
+        and end_time_of_day = #{endTimeOfDay,jdbcType=VARCHAR}
+      </if>
+      <if test="startTimeOfDay != null and startTimeOfDay != ''">
+        and start_time_of_day = #{startTimeOfDay,jdbcType=VARCHAR}
+      </if>
+    </trim>
+    <if test="orderBy != null">order by #{orderBy}</if>
+    <if test="orderDesc != null">desc</if>
+  </select>
+
+  <select id="getByRole" parameterType="map" resultType="com.onlythinking.shop.core.model.SelectOptions">
+    select
+    <include refid="select_options_role"/>
+    from ot_sys_role
+    <trim prefix="where" prefixOverrides="and |or ">
+      <if test="id != null and id != ''">
+        and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTime != null">
+        and created_time = #{createdTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="lastModifiedTime != null">
+        and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null and remark != ''">
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="roleCode != null and roleCode != ''">
+        and role_code = #{roleCode,jdbcType=VARCHAR}
+      </if>
+      <if test="roleName != null and roleName != ''">
+        and role_name = #{roleName,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null and status != ''">
+        and status = #{status,jdbcType=VARCHAR}
+      </if>
+    </trim>
+    <if test="orderBy != null">order by #{orderBy}</if>
+    <if test="orderDesc != null">desc</if>
+  </select>
+
+  <select id="getBySysUser" parameterType="java.util.Map" resultType="com.onlythinking.shop.core.model.SelectOptions">
+    select
+    <include refid="select_options_user"/>
+    from ot_sys_user
+    <trim prefix="where" prefixOverrides="and |or ">
+      <if test="id != null and id != ''">
+        and id = #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTime != null">
+        and created_time = #{createdTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="lastModifiedTime != null">
+        and last_modified_time = #{lastModifiedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null and remark != ''">
+        and remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="merchantNo != null and merchantNo != ''">
+        and merchant_no = #{merchantNo,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null and username != ''">
+        and username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="active != null">
+        and active = #{active,jdbcType=BIT}
+      </if>
+      <if test="password != null and password != ''">
+        and password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="realName != null and realName != ''">
+        and real_name = #{realName,jdbcType=VARCHAR}
+      </if>
+      <if test="phoneNo != null and phoneNo != ''">
+        and phone_no = #{phoneNo,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null and email != ''">
+        and email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="cardNo != null and cardNo != ''">
+        and card_no = #{cardNo,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+
+</mapper>
+
+

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: shop-server
+  cloud:
+    config:
+      enabled: true
+      uri: ${CONFIG_SERVER:http://localhost:7100}
+
+---
+spring:
+  profiles: docker
+  cloud:
+     config:
+        uri: http://configserver:7100
+        fail-fast: true

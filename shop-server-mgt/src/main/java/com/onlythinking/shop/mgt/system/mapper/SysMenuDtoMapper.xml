@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.onlythinking.shop.mgt.system.mapper.SysMenuDtoMapper">
+
+  <select id="getMenus" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysMenu">
+    select
+    <include refid="com.onlythinking.shop.mapper.OtSysMenuMapper.Base_Column_List"/>
+    from ot_sys_menu t
+    <trim prefix="where" prefixOverrides="and |or ">
+      <if test="parentId == null or parentId == ''">
+        t.parent_id is null
+      </if>
+      <if test="parentId != null and parentId != ''">
+        t.parent_id = #{parentId}
+      </if>
+    </trim>
+    order by t.by_order
+  </select>
+
+  <select id="getMenusByParentId" parameterType="java.lang.String" resultType="com.onlythinking.shop.model.OtSysMenu">
+    select
+    <include refid="com.onlythinking.shop.mapper.OtSysMenuMapper.Base_Column_List"/>
+    from ot_sys_menu t
+    <trim prefix="where" prefixOverrides="and |or ">
+      <if test="parentId == null or parentId == ''">
+        t.parent_id is null
+      </if>
+      <if test="parentId != null and parentId != ''">
+        t.parent_id = #{parentId}
+      </if>
+    </trim>
+  </select>
+
+  <select id="getAuthorityByParentId" parameterType="java.lang.String" resultType="com.onlythinking.shop.model.OtSysAuthority">
+    select
+    <include refid="com.onlythinking.shop.mapper.OtSysAuthorityMapper.Base_Column_List"/>
+    from ot_sys_authority t
+    <trim prefix="where" prefixOverrides="and |or ">
+      <if test="parentId == null or parentId == ''">
+        t.parent_id is null
+      </if>
+      <if test="parentId != null and parentId != ''">
+        t.parent_id = #{parentId}
+      </if>
+    </trim>
+  </select>
+
+  <select id="countRoleMenuByMenuIds" parameterType="java.util.List" resultType="java.lang.Long">
+    select
+    count(0)
+    from ot_sys_role_menu_rel where menu_id in
+    <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="countUserRoleByRoleId" parameterType="java.lang.String" resultType="java.lang.Long">
+    select
+    count(0)
+    from ot_sys_user_role_rel where role_Id = #{roleId}
+  </select>
+
+  <select id="getSysRoleAuthority" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtSysAuthority">
+    SELECT
+	      a1.id	id,
+        a1.created_time	createdTime,
+        a1.last_modified_time	lastModifiedTime,
+        a1.remark	remark,
+        a1.authority_name	authorityName,
+        a1.by_order	byOrder,
+        a1.shiro_code	shiroCode
+    FROM
+	      ot_sys_authority a1
+	  JOIN ot_sys_role_authority_rel a2 ON a1.id = a2.authority_id
+	  WHERE a2.role_Id = #{roleId}
+  </select>
+
+</mapper>
+
+

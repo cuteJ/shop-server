@@ -13,5 +13,6 @@ public enum MaType {
     swan,//"百度"
     my,//"支付宝"
     tt,//"头条"
-    h5
+    h5,
+    web
 }

@@ -1,0 +1,166 @@
+=== C端用户登录流程
+
+[plantuml,auth-protocol]
+....
+User  -> AuthServer: Login(username|code)
+User  <-- AuthServer: Response errorCode 401 is fail
+User  <-- AuthServer: Response token is ok
+User  -> Resources:  Authorization:bearer $TOKEN
+User  <-- Resources: Response playLoad
+....
+
+=== 用户登录API
+用户登录 成功返回 token
+
+[[_loginusingpost]]
+==== 账号登录(maType=h5|web:用户名或者手机号登录)
+....
+POST /api/app/auth/{appNo}/{maType}/login
+....
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**appNo** +
+__必填__|应用编号（应用管理创建）|string
+|**Path**|**maType** +
+__必填__|平台类型|enum (h5, web)
+|**Body**|**dto** +
+__必填__|请求Body|<<MaLoginDto,请求Body>>
+|===
+
+[[MaLoginDto]]
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**username** +
+__必填__|用户名\|手机号 +
+**样例** : `"11111111111"`|string
+|**password** +
+__必填__|密码\|手机验证码 +
+**样例** : `"4034"`|string
+|===
+
+=== 响应
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**hasUser** +
+__必填__|是否已注册 +
+**样例** : `true`|boolean
+|**token** +
+__必填__|Token +
+**样例** : `"string"`|string
+|===
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/app/auth/100/h5/login
+----
+
+====== 请求 body
+[source,json]
+----
+{
+  "username" : "11111111111",
+  "password" : "4034"
+}
+----
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "hasUser" : true,
+  "token" : "xxxxxxxxxxxxxxxxx"
+}
+----
+
+[[_maloginusingpost]]
+==== 登陆接口
+....
+POST /api/app/auth/{appNo}/{maType}/ma_login
+....
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**appNo** +
+__必填__|应用编号（应用管理创建）|string
+|**Path**|**maType** +
+__必填__|小程序平台|enum (wx, swan, my, tt)
+|**Body**|**dto** +
+__必填__|请求Body|<<MaLoginDto_Ma,请求Body>>
+|===
+
+[[MaLoginDto_Ma]]
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__必填__|code +
+**样例** : `"小程序登录code"`|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**hasUser** +
+__必填__|是否已注册 +
+**样例** : `true`|boolean
+|**token** +
+__必填__|Token +
+**样例** : `"string"`|string
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `application/json;charset=UTF-8`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/api/app/auth/100/wx/ma_login
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "code" : "xxxxxxxx"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "hasUser" : false,
+  "token" : "xxxxxxxxxxx"
+}
+----

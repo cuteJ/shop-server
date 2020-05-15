@@ -1,0 +1,10 @@
+..
+.
+LICENSE
+spec
+MRI_LICENSE
+README.md
+Rakefile
+lib
+Gemfile
+rubysl-resolv.gemspec

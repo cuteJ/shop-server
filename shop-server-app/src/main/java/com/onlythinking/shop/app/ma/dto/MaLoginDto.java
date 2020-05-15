@@ -1,5 +1,6 @@
 package com.onlythinking.shop.app.ma.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import lombok.Data;
  *
  * @author Li Xingping
  */
+@ApiModel("小程序登录")
 @Data
 public class MaLoginDto {
 
