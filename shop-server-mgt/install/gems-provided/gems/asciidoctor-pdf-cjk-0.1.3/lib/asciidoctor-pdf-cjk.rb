@@ -1,1 +1,0 @@
-require "asciidoctor/pdf/cjk"

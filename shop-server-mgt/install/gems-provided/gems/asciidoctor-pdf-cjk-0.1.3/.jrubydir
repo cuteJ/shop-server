@@ -1,9 +1,0 @@
-..
-.
-bin
-README.md
-Rakefile
-lib
-Gemfile
-LICENSE.txt
-asciidoctor-pdf-cjk.gemspec
