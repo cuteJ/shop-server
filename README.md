@@ -21,7 +21,7 @@
 
 ## 文档相关
 * [Swagger](https://www.zzhjshop.com/shop_test/swagger-ui.html)
-* [Docs Of Html (Html格式文档)](https://cutej.github.io/shop-server)
+* [Docs Of Html (Html格式文档)](https://cutej.github.io/shop-server/index.html)
 * [Docs Of Pdf（Pdf格式文档）](http://shop-mgt.zzhjshop.com/pdf/index.pdf)
 
 ### 项目结构
