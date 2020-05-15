@@ -1,14 +1,3 @@
-/*Create db*/
-create database if not exists cuteJ_shop
-default character set utf8mb4
-default collate utf8mb4_general_ci;
-
-/*Create user*/
-create user if not exists `cuteJ_shop`@`127.0.0.1` identified by 'cuteJ_shop123';
-grant alter, alter routine, create, create routine, create temporary tables, create view, delete, drop, grant option, index, insert, lock tables, references, select, show view, trigger, update on `cuteJ_shop`.* to `cuteJ_shop`@`127.0.0.1`;
-
-/*Create db*/
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -16,55 +5,55 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for ot_app_brand
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_app_brand`;
-CREATE TABLE "ot_app_brand" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "app_name" varchar(100) NOT NULL COMMENT '应用名称',
-  "app_no" varchar(40) NOT NULL COMMENT '应用编号',
-  "app_desc" varchar(255) DEFAULT NULL COMMENT '应用描述',
-  "logo" varchar(100) DEFAULT NULL COMMENT 'Logo',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UK879lennneme9u4tfbhlsufpfa" ("app_no")
+CREATE TABLE `ot_app_brand` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `app_name` varchar(100) NOT NULL COMMENT '应用名称',
+  `app_no` varchar(40) NOT NULL COMMENT '应用编号',
+  `app_desc` varchar(255) DEFAULT NULL COMMENT '应用描述',
+  `logo` varchar(100) DEFAULT NULL COMMENT 'Logo',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK879lennneme9u4tfbhlsufpfa` (`app_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='应用品牌';
 
 -- ----------------------------
 -- Table structure for ot_app_ma_config
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_app_ma_config`;
-CREATE TABLE "ot_app_ma_config" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "aes_key" varchar(200) DEFAULT NULL COMMENT '小程序的AESKey',
-  "aid" varchar(40) NOT NULL COMMENT '应用ID',
-  "app_id" varchar(200) NOT NULL COMMENT '小程序的appid',
-  "app_key" varchar(200) DEFAULT NULL COMMENT '小程序的appKey',
-  "app_no" varchar(40) NOT NULL COMMENT '应用编号',
-  "ma_type" varchar(20) NOT NULL COMMENT '小程序类型(wx|swan|my|tt)',
-  "msg_data_format" varchar(20) DEFAULT NULL COMMENT ' 消息格式，XML或者JSON',
-  "secret" varchar(200) NOT NULL COMMENT '小程序的secret',
-  "token" varchar(200) DEFAULT NULL COMMENT '小程序的token',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UKcq9jru1um5h8hdhpxp2w6pu4i" ("app_no","ma_type")
+CREATE TABLE `ot_app_ma_config` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `aes_key` varchar(200) DEFAULT NULL COMMENT '小程序的AESKey',
+  `aid` varchar(40) NOT NULL COMMENT '应用ID',
+  `app_id` varchar(200) NOT NULL COMMENT '小程序的appid',
+  `app_key` varchar(200) DEFAULT NULL COMMENT '小程序的appKey',
+  `app_no` varchar(40) NOT NULL COMMENT '应用编号',
+  `ma_type` varchar(20) NOT NULL COMMENT '小程序类型(wx|swan|my|tt)',
+  `msg_data_format` varchar(20) DEFAULT NULL COMMENT ' 消息格式，XML或者JSON',
+  `secret` varchar(200) NOT NULL COMMENT '小程序的secret',
+  `token` varchar(200) DEFAULT NULL COMMENT '小程序的token',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKcq9jru1um5h8hdhpxp2w6pu4i` (`app_no`,`ma_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='应用小程序配置';
 
 -- ----------------------------
 -- Table structure for ot_column_metadata
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_column_metadata`;
-CREATE TABLE "ot_column_metadata" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "column_name" varchar(40) NOT NULL COMMENT '列名',
-  "column_size" int(10) DEFAULT NULL COMMENT '长度',
-  "decimal_digits" int(10) DEFAULT NULL COMMENT '小数保留位',
-  "not_null" bit(1) DEFAULT NULL COMMENT '是否为空',
-  "remarks" varchar(400) DEFAULT NULL COMMENT '注释',
-  "table_id" varchar(40) NOT NULL COMMENT '字典表ID',
-  "type_name" varchar(40) NOT NULL COMMENT '类型',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_column_metadata` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `column_name` varchar(40) NOT NULL COMMENT '列名',
+  `column_size` int(10) DEFAULT NULL COMMENT '长度',
+  `decimal_digits` int(10) DEFAULT NULL COMMENT '小数保留位',
+  `not_null` bit(1) DEFAULT NULL COMMENT '是否为空',
+  `remarks` varchar(400) DEFAULT NULL COMMENT '注释',
+  `table_id` varchar(40) NOT NULL COMMENT '字典表ID',
+  `type_name` varchar(40) NOT NULL COMMENT '类型',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='数据字典列';
 
 -- ----------------------------
@@ -307,16 +296,16 @@ COMMIT;
 -- Table structure for ot_region
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_region`;
-CREATE TABLE "ot_region" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "depth" int(1) NOT NULL COMMENT '级别',
-  "depth_name" varchar(40) DEFAULT NULL COMMENT '级别名称',
-  "first_letter" varchar(20) DEFAULT NULL COMMENT '首字符',
-  "jian_pin" varchar(100) DEFAULT NULL COMMENT '简拼',
-  "name" varchar(40) NOT NULL COMMENT '名称',
-  "parent_id" varchar(40) DEFAULT NULL COMMENT '父级ID',
-  "pin_yin" varchar(100) DEFAULT NULL COMMENT '拼音',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_region` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `depth` int(1) NOT NULL COMMENT '级别',
+  `depth_name` varchar(40) DEFAULT NULL COMMENT '级别名称',
+  `first_letter` varchar(20) DEFAULT NULL COMMENT '首字符',
+  `jian_pin` varchar(100) DEFAULT NULL COMMENT '简拼',
+  `name` varchar(40) NOT NULL COMMENT '名称',
+  `parent_id` varchar(40) DEFAULT NULL COMMENT '父级ID',
+  `pin_yin` varchar(100) DEFAULT NULL COMMENT '拼音',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='地区数据';
 
 -- ----------------------------
@@ -4328,18 +4317,18 @@ COMMIT;
 -- Table structure for ot_sys_api_list
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_api_list`;
-CREATE TABLE "ot_sys_api_list" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "api_name" varchar(40) NOT NULL COMMENT 'API名称',
-  "api_tag" varchar(40) DEFAULT NULL COMMENT 'API tag',
-  "api_url" varchar(100) NOT NULL COMMENT 'APIUrl',
-  "by_order" int(3) DEFAULT NULL COMMENT '排序',
-  "parent_id" varchar(40) DEFAULT NULL COMMENT '父节点ID',
-  "shiro_code" varchar(40) DEFAULT NULL COMMENT 'Shiro编码',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_api_list` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `api_name` varchar(40) NOT NULL COMMENT 'API名称',
+  `api_tag` varchar(40) DEFAULT NULL COMMENT 'API tag',
+  `api_url` varchar(100) NOT NULL COMMENT 'APIUrl',
+  `by_order` int(3) DEFAULT NULL COMMENT '排序',
+  `parent_id` varchar(40) DEFAULT NULL COMMENT '父节点ID',
+  `shiro_code` varchar(40) DEFAULT NULL COMMENT 'Shiro编码',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统API列表';
 
 -- ----------------------------
@@ -4438,18 +4427,18 @@ COMMIT;
 -- Table structure for ot_sys_authority
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_authority`;
-CREATE TABLE "ot_sys_authority" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "action" varchar(40) DEFAULT NULL COMMENT '动作',
-  "authority_name" varchar(40) NOT NULL COMMENT '权限名称',
-  "by_order" int(3) DEFAULT NULL COMMENT '排序',
-  "domain" varchar(40) DEFAULT NULL COMMENT '业务',
-  "module" varchar(40) NOT NULL COMMENT '权限模块',
-  "parent_id" varchar(40) DEFAULT NULL COMMENT '父节点ID',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_authority` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `action` varchar(40) DEFAULT NULL COMMENT '动作',
+  `authority_name` varchar(40) NOT NULL COMMENT '权限名称',
+  `by_order` int(3) DEFAULT NULL COMMENT '排序',
+  `domain` varchar(40) DEFAULT NULL COMMENT '业务',
+  `module` varchar(40) NOT NULL COMMENT '权限模块',
+  `parent_id` varchar(40) DEFAULT NULL COMMENT '父节点ID',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统API权限';
 
 -- ----------------------------
@@ -4504,16 +4493,16 @@ COMMIT;
 -- Table structure for ot_sys_dic
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_dic`;
-CREATE TABLE "ot_sys_dic" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "status" varchar(20) NOT NULL COMMENT '是否启用（码类：1000）',
-  "type_code" varchar(20) NOT NULL COMMENT '码类编码',
-  "val_code" varchar(20) NOT NULL COMMENT '码值编码',
-  "val_name" varchar(40) NOT NULL COMMENT '码值名称',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_dic` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `status` varchar(20) NOT NULL COMMENT '是否启用（码类：1000）',
+  `type_code` varchar(20) NOT NULL COMMENT '码类编码',
+  `val_code` varchar(20) NOT NULL COMMENT '码值编码',
+  `val_name` varchar(40) NOT NULL COMMENT '码值名称',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='字典信息';
 
 -- ----------------------------
@@ -4545,147 +4534,147 @@ COMMIT;
 -- Table structure for ot_sys_job_details
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_job_details`;
-CREATE TABLE "ot_sys_job_details" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "clazz_path" varchar(200) NOT NULL COMMENT '任务执行方法',
-  "description" varchar(255) DEFAULT NULL COMMENT '任务描述',
-  "job_name" varchar(40) NOT NULL COMMENT '任务名称',
-  "job_params" varchar(1000) DEFAULT NULL COMMENT '任务参数',
-  "status" varchar(20) NOT NULL COMMENT '是否启用(1000)',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_job_details` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `clazz_path` varchar(200) NOT NULL COMMENT '任务执行方法',
+  `description` varchar(255) DEFAULT NULL COMMENT '任务描述',
+  `job_name` varchar(40) NOT NULL COMMENT '任务名称',
+  `job_params` varchar(1000) DEFAULT NULL COMMENT '任务参数',
+  `status` varchar(20) NOT NULL COMMENT '是否启用(1000)',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统任务';
 
 -- ----------------------------
 -- Table structure for ot_sys_job_instance
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_job_instance`;
-CREATE TABLE "ot_sys_job_instance" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "clazz_path" varchar(200) DEFAULT NULL COMMENT '任务执行方法',
-  "end_time" datetime DEFAULT NULL COMMENT '结束时间',
-  "group_name" varchar(40) DEFAULT NULL COMMENT '组名称',
-  "instance_id" varchar(40) NOT NULL COMMENT '任务实例ID',
-  "instance_params" varchar(1000) DEFAULT NULL COMMENT '任务实例参数',
-  "job_id" varchar(40) NOT NULL COMMENT '任务ID',
-  "job_name" varchar(40) DEFAULT NULL COMMENT '任务名称',
-  "start_time" datetime DEFAULT NULL COMMENT '开始时间',
-  "status" varchar(20) NOT NULL COMMENT '实例状态(1003)',
-  "trigger_id" varchar(40) NOT NULL COMMENT '触发器ID',
-  "trigger_rule" varchar(40) DEFAULT NULL COMMENT '触发规则',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_job_instance` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `clazz_path` varchar(200) DEFAULT NULL COMMENT '任务执行方法',
+  `end_time` datetime DEFAULT NULL COMMENT '结束时间',
+  `group_name` varchar(40) DEFAULT NULL COMMENT '组名称',
+  `instance_id` varchar(40) NOT NULL COMMENT '任务实例ID',
+  `instance_params` varchar(1000) DEFAULT NULL COMMENT '任务实例参数',
+  `job_id` varchar(40) NOT NULL COMMENT '任务ID',
+  `job_name` varchar(40) DEFAULT NULL COMMENT '任务名称',
+  `start_time` datetime DEFAULT NULL COMMENT '开始时间',
+  `status` varchar(20) NOT NULL COMMENT '实例状态(1003)',
+  `trigger_id` varchar(40) NOT NULL COMMENT '触发器ID',
+  `trigger_rule` varchar(40) DEFAULT NULL COMMENT '触发规则',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统任务实例';
 
 -- ----------------------------
 -- Table structure for ot_sys_job_run_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_job_run_log`;
-CREATE TABLE "ot_sys_job_run_log" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '操作记录',
-  "instance_id" varchar(40) NOT NULL COMMENT '任务实例ID',
-  "result" varchar(1000) DEFAULT NULL COMMENT '返回结果',
-  "status" varchar(20) NOT NULL COMMENT '实例状态(1004)',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_job_run_log` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '操作记录',
+  `instance_id` varchar(40) NOT NULL COMMENT '任务实例ID',
+  `result` varchar(1000) DEFAULT NULL COMMENT '返回结果',
+  `status` varchar(20) NOT NULL COMMENT '实例状态(1004)',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统任务运行日志';
 
 -- ----------------------------
 -- Table structure for ot_sys_job_trigger
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_job_trigger`;
-CREATE TABLE "ot_sys_job_trigger" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "cron" varchar(20) DEFAULT NULL COMMENT 'Cron',
-  "days_of_week" varchar(40) DEFAULT NULL COMMENT '需要执行的星期',
-  "end_time_of_day" varchar(40) DEFAULT NULL COMMENT '每天结束时间',
-  "_interval" int(10) DEFAULT NULL COMMENT '间隔',
-  "interval_unit" varchar(20) DEFAULT NULL COMMENT '间隔单位',
-  "repeat_count" int(10) DEFAULT NULL COMMENT '重复次数',
-  "start_time_of_day" varchar(40) DEFAULT NULL COMMENT '每天开始时间',
-  "trigger_name" varchar(40) NOT NULL COMMENT '触发器名称',
-  "trigger_type" varchar(40) NOT NULL COMMENT '触发类型(1002)',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_job_trigger` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `cron` varchar(20) DEFAULT NULL COMMENT 'Cron',
+  `days_of_week` varchar(40) DEFAULT NULL COMMENT '需要执行的星期',
+  `end_time_of_day` varchar(40) DEFAULT NULL COMMENT '每天结束时间',
+  `_interval` int(10) DEFAULT NULL COMMENT '间隔',
+  `interval_unit` varchar(20) DEFAULT NULL COMMENT '间隔单位',
+  `repeat_count` int(10) DEFAULT NULL COMMENT '重复次数',
+  `start_time_of_day` varchar(40) DEFAULT NULL COMMENT '每天开始时间',
+  `trigger_name` varchar(40) NOT NULL COMMENT '触发器名称',
+  `trigger_type` varchar(40) NOT NULL COMMENT '触发类型(1002)',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='任务触发器';
 
 -- ----------------------------
 -- Table structure for ot_sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_menu`;
-CREATE TABLE "ot_sys_menu" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "by_order" int(3) DEFAULT NULL COMMENT '排序',
-  "component" varchar(40) NOT NULL COMMENT '组件名称',
-  "hidden" bit(1) DEFAULT b'0' COMMENT '是否隐藏',
-  "meta" varchar(1000) DEFAULT NULL COMMENT 'Meta',
-  "parent_id" varchar(40) DEFAULT NULL COMMENT '父节点ID',
-  "path" varchar(40) DEFAULT NULL COMMENT '菜单路径',
-  "redirect" varchar(40) DEFAULT NULL COMMENT 'redirect',
-  "always_show" bit(1) DEFAULT b'0' COMMENT '始终显示',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_menu` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `by_order` int(3) DEFAULT NULL COMMENT '排序',
+  `component` varchar(40) NOT NULL COMMENT '组件名称',
+  `hidden` bit(1) DEFAULT b'0' COMMENT '是否隐藏',
+  `meta` varchar(1000) DEFAULT NULL COMMENT 'Meta',
+  `parent_id` varchar(40) DEFAULT NULL COMMENT '父节点ID',
+  `path` varchar(40) DEFAULT NULL COMMENT '菜单路径',
+  `redirect` varchar(40) DEFAULT NULL COMMENT 'redirect',
+  `always_show` bit(1) DEFAULT b'0' COMMENT '始终显示',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统菜单列表';
 
 -- ----------------------------
 -- Records of ot_sys_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `ot_sys_menu` VALUES ('appBrandManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'appBrandManager', b'0', '{\"icon\":\"child\",\"title\":\"应用品牌\"}', 'appManager', 'brand_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('appManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'appManager', b'0', '{\"icon\":\"app\",\"title\":\"应用管理\"}', NULL, '/app', NULL, b'1');
-INSERT INTO `ot_sys_menu` VALUES ('sysApiListManager', '2020-05-12 18:39:37', NULL, NULL, 6, 'sysApiListManager', b'0', '{\"icon\":\"child\",\"title\":\"接口列表\"}', 'systemManager', 'apiList_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysAuthorityManager', '2020-05-12 18:39:37', NULL, NULL, 5, 'sysAuthorityManager', b'0', '{\"icon\":\"child\",\"title\":\"接口权限\"}', 'systemManager', 'authority_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysDicManager', '2020-05-12 18:39:37', NULL, NULL, 7, 'sysDicManager', b'0', '{\"icon\":\"child\",\"title\":\"常量管理\"}', 'systemManager', 'dic_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysJobManager', '2020-05-12 18:39:37', NULL, NULL, 4, 'sysJobManager', b'0', '{\"icon\":\"child\",\"title\":\"定时任务\"}', 'systemManager', 'job_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysMenuManager', '2020-05-12 18:39:37', NULL, NULL, 3, 'sysMenuManager', b'0', '{\"icon\":\"child\",\"title\":\"菜单管理\"}', 'systemManager', 'menu_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysMetadataManager', '2020-05-12 18:39:37', NULL, NULL, 9, 'sysMetadataManager', b'0', '{\"icon\":\"child\",\"title\":\"数据字典\"}', 'systemManager', 'metadata_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysOptLogManager', '2020-05-12 18:39:37', NULL, NULL, 10, 'sysOptLogManager', b'0', '{\"icon\":\"child\",\"title\":\"操作日志\"}', 'systemManager', 'optLog_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysRegionManager', '2020-05-12 18:39:37', NULL, NULL, 8, 'sysRegionManager', b'0', '{\"icon\":\"child\",\"title\":\"地区管理\"}', 'systemManager', 'region_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('sysRoleManager', '2020-05-12 18:39:37', NULL, NULL, 2, 'sysRoleManager', b'0', '{\"icon\":\"child\",\"title\":\"角色管理\"}', 'systemManager', 'role_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('systemManager', '2020-05-12 18:39:37', NULL, NULL, 2, 'systemManager', b'0', '{\"icon\":\"system\",\"title\":\"系统管理\"}', NULL, '/sys', NULL, b'1');
-INSERT INTO `ot_sys_menu` VALUES ('sysUserManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'sysUserManager', b'0', '{\"icon\":\"child\",\"title\":\"用户管理\"}', 'systemManager', 'user_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('userLoginManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'userLoginManager', b'0', '{\"icon\":\"child\",\"title\":\"用户列表\"}', 'userManager', 'user_manager', NULL, b'0');
-INSERT INTO `ot_sys_menu` VALUES ('userManager', '2020-05-12 18:39:37', NULL, NULL, 0, 'userManager', b'0', '{\"icon\":\"user\",\"title\":\"用户管理\"}', NULL, '/user', NULL, b'1');
+INSERT INTO `ot_sys_menu` VALUES ('appBrandManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'appBrandManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`应用品牌\`}', 'appManager', 'brand_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('appManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'appManager', b'0', '{\`icon\`:\`app\`,\`title\`:\`应用管理\`}', NULL, '/app', NULL, b'1');
+INSERT INTO `ot_sys_menu` VALUES ('sysApiListManager', '2020-05-12 18:39:37', NULL, NULL, 6, 'sysApiListManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`接口列表\`}', 'systemManager', 'apiList_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysAuthorityManager', '2020-05-12 18:39:37', NULL, NULL, 5, 'sysAuthorityManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`接口权限\`}', 'systemManager', 'authority_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysDicManager', '2020-05-12 18:39:37', NULL, NULL, 7, 'sysDicManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`常量管理\`}', 'systemManager', 'dic_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysJobManager', '2020-05-12 18:39:37', NULL, NULL, 4, 'sysJobManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`定时任务\`}', 'systemManager', 'job_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysMenuManager', '2020-05-12 18:39:37', NULL, NULL, 3, 'sysMenuManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`菜单管理\`}', 'systemManager', 'menu_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysMetadataManager', '2020-05-12 18:39:37', NULL, NULL, 9, 'sysMetadataManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`数据字典\`}', 'systemManager', 'metadata_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysOptLogManager', '2020-05-12 18:39:37', NULL, NULL, 10, 'sysOptLogManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`操作日志\`}', 'systemManager', 'optLog_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysRegionManager', '2020-05-12 18:39:37', NULL, NULL, 8, 'sysRegionManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`地区管理\`}', 'systemManager', 'region_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('sysRoleManager', '2020-05-12 18:39:37', NULL, NULL, 2, 'sysRoleManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`角色管理\`}', 'systemManager', 'role_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('systemManager', '2020-05-12 18:39:37', NULL, NULL, 2, 'systemManager', b'0', '{\`icon\`:\`system\`,\`title\`:\`系统管理\`}', NULL, '/sys', NULL, b'1');
+INSERT INTO `ot_sys_menu` VALUES ('sysUserManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'sysUserManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`用户管理\`}', 'systemManager', 'user_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('userLoginManager', '2020-05-12 18:39:37', NULL, NULL, 1, 'userLoginManager', b'0', '{\`icon\`:\`child\`,\`title\`:\`用户列表\`}', 'userManager', 'user_manager', NULL, b'0');
+INSERT INTO `ot_sys_menu` VALUES ('userManager', '2020-05-12 18:39:37', NULL, NULL, 0, 'userManager', b'0', '{\`icon\`:\`user\`,\`title\`:\`用户管理\`}', NULL, '/user', NULL, b'1');
 COMMIT;
 
 -- ----------------------------
 -- Table structure for ot_sys_menu_authority_rel
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_menu_authority_rel`;
-CREATE TABLE "ot_sys_menu_authority_rel" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "authority_id" varchar(40) NOT NULL COMMENT '权限ID',
-  "menu_id" varchar(40) NOT NULL COMMENT '菜单ID',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_menu_authority_rel` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `authority_id` varchar(40) NOT NULL COMMENT '权限ID',
+  `menu_id` varchar(40) NOT NULL COMMENT '菜单ID',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='菜单权限关联';
 
 -- ----------------------------
 -- Table structure for ot_sys_opt_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_opt_log`;
-CREATE TABLE "ot_sys_opt_log" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '操作记录',
-  "ip_geo" varchar(80) DEFAULT NULL COMMENT 'IP来源',
-  "operator" varchar(40) NOT NULL COMMENT '操作人',
-  "opt_ip" varchar(40) DEFAULT NULL COMMENT 'IP',
-  "opt_name" varchar(100) DEFAULT NULL COMMENT '操作说明',
-  "request_data" varchar(2000) DEFAULT NULL COMMENT '请求数据',
-  "request_url" varchar(100) DEFAULT NULL COMMENT '请求地址',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_opt_log` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '操作记录',
+  `ip_geo` varchar(80) DEFAULT NULL COMMENT 'IP来源',
+  `operator` varchar(40) NOT NULL COMMENT '操作人',
+  `opt_ip` varchar(40) DEFAULT NULL COMMENT 'IP',
+  `opt_name` varchar(100) DEFAULT NULL COMMENT '操作说明',
+  `request_data` varchar(2000) DEFAULT NULL COMMENT '请求数据',
+  `request_url` varchar(100) DEFAULT NULL COMMENT '请求地址',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统用户操作日志';
 
 -- ----------------------------
@@ -4693,55 +4682,55 @@ CREATE TABLE "ot_sys_opt_log" (
 -- ----------------------------
 BEGIN;
 INSERT INTO `ot_sys_opt_log` VALUES ('11a7d11094df11ea99c600163e08b76e', '2020-05-13 14:00:38', NULL, '成都市', 'admin', '112.19.161.12', '系统用户注销', NULL, '/shop_test/api/login/logout');
-INSERT INTO `ot_sys_opt_log` VALUES ('12bb63f094df11ea99c600163e08b76e', '2020-05-13 14:00:40', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"demo\"}]', '/shop_test/api/login/auth');
-INSERT INTO `ot_sys_opt_log` VALUES ('16d3a0c094de11ea99c600163e08b76e', '2020-05-13 13:53:37', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"admin\"}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('12bb63f094df11ea99c600163e08b76e', '2020-05-13 14:00:40', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`demo\`}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('16d3a0c094de11ea99c600163e08b76e', '2020-05-13 13:53:37', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`admin\`}]', '/shop_test/api/login/auth');
 INSERT INTO `ot_sys_opt_log` VALUES ('428063c094c511ea95a900163e08b76e', '2020-05-13 10:55:53', NULL, '成都市', 'admin', '112.19.161.12', '系统用户注销', NULL, '/shop_test/api/login/logout');
-INSERT INTO `ot_sys_opt_log` VALUES ('451215b094c611ea95a900163e08b76e', '2020-05-13 11:03:07', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"admin\"}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('451215b094c611ea95a900163e08b76e', '2020-05-13 11:03:07', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`admin\`}]', '/shop_test/api/login/auth');
 INSERT INTO `ot_sys_opt_log` VALUES ('498beff094c411ea95a900163e08b76e', '2020-05-13 10:48:56', NULL, '成都市', 'admin', '112.19.161.12', '系统用户注销', NULL, '/shop_test/api/login/logout');
-INSERT INTO `ot_sys_opt_log` VALUES ('4c13d35094c411ea95a900163e08b76e', '2020-05-13 10:49:00', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"admin\"}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('4c13d35094c411ea95a900163e08b76e', '2020-05-13 10:49:00', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`admin\`}]', '/shop_test/api/login/auth');
 INSERT INTO `ot_sys_opt_log` VALUES ('4f12959094de11ea99c600163e08b76e', '2020-05-13 13:55:12', NULL, '成都市', 'admin', '112.19.161.12', '系统用户注销', NULL, '/shop_test/api/login/logout');
-INSERT INTO `ot_sys_opt_log` VALUES ('50cc2c7094de11ea99c600163e08b76e', '2020-05-13 13:55:15', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"demo\"}]', '/shop_test/api/login/auth');
-INSERT INTO `ot_sys_opt_log` VALUES ('8371287094c911ea915000163e08b76e', '2020-05-13 11:26:20', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"admin\"}]', '/shop_test/api/login/auth');
-INSERT INTO `ot_sys_opt_log` VALUES ('86bea5f094ee11ea99c600163e08b76e', '2020-05-13 15:51:17', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"admin\"}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('50cc2c7094de11ea99c600163e08b76e', '2020-05-13 13:55:15', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`demo\`}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('8371287094c911ea915000163e08b76e', '2020-05-13 11:26:20', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`admin\`}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('86bea5f094ee11ea99c600163e08b76e', '2020-05-13 15:51:17', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`admin\`}]', '/shop_test/api/login/auth');
 INSERT INTO `ot_sys_opt_log` VALUES ('8f91a0f094c711ea95a900163e08b76e', '2020-05-13 11:12:22', NULL, '成都市', 'admin', '112.19.161.12', '系统用户注销', NULL, '/shop_test/api/login/logout');
-INSERT INTO `ot_sys_opt_log` VALUES ('928b58f094c711ea95a900163e08b76e', '2020-05-13 11:12:27', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"demo\"}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('928b58f094c711ea95a900163e08b76e', '2020-05-13 11:12:27', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`demo\`}]', '/shop_test/api/login/auth');
 INSERT INTO `ot_sys_opt_log` VALUES ('c921132094de11ea99c600163e08b76e', '2020-05-13 13:58:37', NULL, '成都市', 'demo', '112.19.161.12', '系统用户注销', NULL, '/shop_test/api/login/logout');
-INSERT INTO `ot_sys_opt_log` VALUES ('cb18eb8094de11ea99c600163e08b76e', '2020-05-13 13:58:40', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"admin\"}]', '/shop_test/api/login/auth');
-INSERT INTO `ot_sys_opt_log` VALUES ('f5756a8094f611ea99c600163e08b76e', '2020-05-13 16:51:39', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\"password\":\"123123\",\"username\":\"demo\"}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('cb18eb8094de11ea99c600163e08b76e', '2020-05-13 13:58:40', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`admin\`}]', '/shop_test/api/login/auth');
+INSERT INTO `ot_sys_opt_log` VALUES ('f5756a8094f611ea99c600163e08b76e', '2020-05-13 16:51:39', NULL, '成都市', 'system', '112.19.161.12', '系统用户登录', '[{\`password\`:\`123123\`,\`username\`:\`demo\`}]', '/shop_test/api/login/auth');
 COMMIT;
 
 -- ----------------------------
 -- Table structure for ot_sys_quartz_job
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_quartz_job`;
-CREATE TABLE "ot_sys_quartz_job" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "clazz_path" varchar(200) NOT NULL COMMENT '任务执行方法',
-  "cron" varchar(20) NOT NULL COMMENT 'Cron',
-  "job_code" varchar(40) NOT NULL COMMENT '任务编号（唯一）',
-  "job_name" varchar(40) NOT NULL COMMENT '任务名称',
-  "status" varchar(20) NOT NULL COMMENT '状态(1000)',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UK3woc49ofk3k4gw8u1t2bq7e1p" ("job_code")
+CREATE TABLE `ot_sys_quartz_job` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `clazz_path` varchar(200) NOT NULL COMMENT '任务执行方法',
+  `cron` varchar(20) NOT NULL COMMENT 'Cron',
+  `job_code` varchar(40) NOT NULL COMMENT '任务编号（唯一）',
+  `job_name` varchar(40) NOT NULL COMMENT '任务名称',
+  `status` varchar(20) NOT NULL COMMENT '状态(1000)',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK3woc49ofk3k4gw8u1t2bq7e1p` (`job_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Quartz定时任务';
 
 -- ----------------------------
 -- Table structure for ot_sys_role
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_role`;
-CREATE TABLE "ot_sys_role" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "role_code" varchar(40) NOT NULL COMMENT '角色编码(唯一)',
-  "role_name" varchar(40) NOT NULL COMMENT '角色名称',
-  "status" varchar(20) NOT NULL COMMENT '是否启用（码类：1000）',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UK6hft9bir8o0lk25wdjd97hwc2" ("role_code")
+CREATE TABLE `ot_sys_role` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `role_code` varchar(40) NOT NULL COMMENT '角色编码(唯一)',
+  `role_name` varchar(40) NOT NULL COMMENT '角色名称',
+  `status` varchar(20) NOT NULL COMMENT '是否启用（码类：1000）',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK6hft9bir8o0lk25wdjd97hwc2` (`role_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统角色信息';
 
 -- ----------------------------
@@ -4756,14 +4745,14 @@ COMMIT;
 -- Table structure for ot_sys_role_authority_rel
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_role_authority_rel`;
-CREATE TABLE "ot_sys_role_authority_rel" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "authority_id" varchar(40) NOT NULL COMMENT '权限ID',
-  "role_id" varchar(40) NOT NULL COMMENT '角色ID',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_role_authority_rel` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `authority_id` varchar(40) NOT NULL COMMENT '权限ID',
+  `role_id` varchar(40) NOT NULL COMMENT '角色ID',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色权限关联';
 
 -- ----------------------------
@@ -4828,15 +4817,15 @@ COMMIT;
 -- Table structure for ot_sys_role_menu_rel
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_role_menu_rel`;
-CREATE TABLE "ot_sys_role_menu_rel" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "half" bit(1) NOT NULL COMMENT '是否半选',
-  "menu_id" varchar(40) NOT NULL COMMENT '菜单ID',
-  "role_id" varchar(40) NOT NULL COMMENT '角色ID',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_role_menu_rel` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `half` bit(1) NOT NULL COMMENT '是否半选',
+  `menu_id` varchar(40) NOT NULL COMMENT '菜单ID',
+  `role_id` varchar(40) NOT NULL COMMENT '角色ID',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色菜单关联';
 
 -- ----------------------------
@@ -4878,16 +4867,16 @@ COMMIT;
 -- Table structure for ot_sys_type_dic
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_type_dic`;
-CREATE TABLE "ot_sys_type_dic" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "status" varchar(20) NOT NULL COMMENT '是否启用（码类：1000）',
-  "type_code" varchar(20) NOT NULL COMMENT '码类编码(唯一)',
-  "type_name" varchar(40) NOT NULL COMMENT '码类名称',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UKp1je6kw6r7c5oyt7a7hxe2suv" ("type_code")
+CREATE TABLE `ot_sys_type_dic` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `status` varchar(20) NOT NULL COMMENT '是否启用（码类：1000）',
+  `type_code` varchar(20) NOT NULL COMMENT '码类编码(唯一)',
+  `type_name` varchar(40) NOT NULL COMMENT '码类名称',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKp1je6kw6r7c5oyt7a7hxe2suv` (`type_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='字典类型';
 
 -- ----------------------------
@@ -4905,20 +4894,20 @@ COMMIT;
 -- Table structure for ot_sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_user`;
-CREATE TABLE "ot_sys_user" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "active" bit(1) NOT NULL COMMENT '是否激活',
-  "avatar" varchar(40) DEFAULT NULL COMMENT '用户头像',
-  "email" varchar(40) DEFAULT NULL COMMENT '邮箱',
-  "password" varchar(40) DEFAULT NULL COMMENT '用户密码',
-  "phone_no" varchar(40) DEFAULT NULL COMMENT '手机号',
-  "real_name" varchar(40) DEFAULT NULL COMMENT '真实姓名',
-  "username" varchar(40) NOT NULL COMMENT '用户名(唯一)',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UKd4j618na2y009s6psvpb6rcnm" ("username")
+CREATE TABLE `ot_sys_user` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `active` bit(1) NOT NULL COMMENT '是否激活',
+  `avatar` varchar(40) DEFAULT NULL COMMENT '用户头像',
+  `email` varchar(40) DEFAULT NULL COMMENT '邮箱',
+  `password` varchar(40) DEFAULT NULL COMMENT '用户密码',
+  `phone_no` varchar(40) DEFAULT NULL COMMENT '手机号',
+  `real_name` varchar(40) DEFAULT NULL COMMENT '真实姓名',
+  `username` varchar(40) NOT NULL COMMENT '用户名(唯一)',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKd4j618na2y009s6psvpb6rcnm` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统用户';
 
 -- ----------------------------
@@ -4933,14 +4922,14 @@ COMMIT;
 -- Table structure for ot_sys_user_role_rel
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_sys_user_role_rel`;
-CREATE TABLE "ot_sys_user_role_rel" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "role_id" varchar(40) NOT NULL COMMENT '角色ID',
-  "user_id" varchar(40) NOT NULL COMMENT '用户ID',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_sys_user_role_rel` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `role_id` varchar(40) NOT NULL COMMENT '角色ID',
+  `user_id` varchar(40) NOT NULL COMMENT '用户ID',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户角色关联';
 
 -- ----------------------------
@@ -4955,14 +4944,14 @@ COMMIT;
 -- Table structure for ot_table_metadata
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_table_metadata`;
-CREATE TABLE "ot_table_metadata" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "pk_name" varchar(40) DEFAULT NULL COMMENT '主键',
-  "remarks" varchar(400) DEFAULT NULL COMMENT '注释',
-  "table_name" varchar(40) NOT NULL COMMENT '表名',
-  "table_scheme" varchar(40) DEFAULT NULL COMMENT 'Scheme',
-  "table_type" varchar(40) DEFAULT NULL COMMENT '表类型',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_table_metadata` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `pk_name` varchar(40) DEFAULT NULL COMMENT '主键',
+  `remarks` varchar(400) DEFAULT NULL COMMENT '注释',
+  `table_name` varchar(40) NOT NULL COMMENT '表名',
+  `table_scheme` varchar(40) DEFAULT NULL COMMENT 'Scheme',
+  `table_type` varchar(40) DEFAULT NULL COMMENT '表类型',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='数据字典表';
 
 -- ----------------------------
@@ -5000,62 +4989,62 @@ COMMIT;
 -- Table structure for ot_user_login
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_user_login`;
-CREATE TABLE "ot_user_login" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "app_no" varchar(20) NOT NULL COMMENT '应用编号',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "avatar_url" varchar(255) DEFAULT NULL COMMENT '头像',
-  "city" varchar(40) DEFAULT NULL COMMENT '城市',
-  "country" varchar(40) DEFAULT NULL COMMENT '国家',
-  "gender" int(2) DEFAULT NULL COMMENT '性别表示：0,1,2等数字.',
-  "ma_type" varchar(20) DEFAULT NULL COMMENT '小程序类型(wx|swan|my|tt|h5)',
-  "nick_name" varchar(100) DEFAULT NULL COMMENT '昵称（用于显示）',
-  "openid" varchar(200) DEFAULT NULL COMMENT '小程序openid',
-  "password" varchar(40) DEFAULT NULL COMMENT '用户密码',
-  "phone_no" varchar(40) DEFAULT NULL COMMENT '手机号（h5模式）',
-  "province" varchar(40) DEFAULT NULL COMMENT '省',
-  "unionid" varchar(200) DEFAULT NULL COMMENT '(小程序用户 + 主体维度)id',
-  "username" varchar(40) DEFAULT NULL COMMENT '用户名',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UK53yg5h7oj5aqlj3lryywudn3q" ("app_no","ma_type","openid")
+CREATE TABLE `ot_user_login` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `app_no` varchar(20) NOT NULL COMMENT '应用编号',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `avatar_url` varchar(255) DEFAULT NULL COMMENT '头像',
+  `city` varchar(40) DEFAULT NULL COMMENT '城市',
+  `country` varchar(40) DEFAULT NULL COMMENT '国家',
+  `gender` int(2) DEFAULT NULL COMMENT '性别表示：0,1,2等数字.',
+  `ma_type` varchar(20) DEFAULT NULL COMMENT '小程序类型(wx|swan|my|tt|h5)',
+  `nick_name` varchar(100) DEFAULT NULL COMMENT '昵称（用于显示）',
+  `openid` varchar(200) DEFAULT NULL COMMENT '小程序openid',
+  `password` varchar(40) DEFAULT NULL COMMENT '用户密码',
+  `phone_no` varchar(40) DEFAULT NULL COMMENT '手机号（h5模式）',
+  `province` varchar(40) DEFAULT NULL COMMENT '省',
+  `unionid` varchar(200) DEFAULT NULL COMMENT '(小程序用户 + 主体维度)id',
+  `username` varchar(40) DEFAULT NULL COMMENT '用户名',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK53yg5h7oj5aqlj3lryywudn3q` (`app_no`,`ma_type`,`openid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户登录信息';
 
 -- ----------------------------
 -- Table structure for ot_user_login_log
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_user_login_log`;
-CREATE TABLE "ot_user_login_log" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '操作记录',
-  "app_no" varchar(20) DEFAULT NULL COMMENT '应用编号',
-  "ip_geo" varchar(80) DEFAULT NULL COMMENT 'IP来源',
-  "login_ip" varchar(40) DEFAULT NULL COMMENT '登录IP',
-  "ma_type" varchar(20) DEFAULT NULL COMMENT '小程序类型(wx|swan|my|tt|h5)',
-  "nick_name" varchar(40) NOT NULL COMMENT '用户昵称',
-  "uid" varchar(40) NOT NULL COMMENT '用户ID',
-  "unique_key" varchar(200) DEFAULT NULL COMMENT '唯一值(appNo:maType:(openid|phoneNo))',
-  PRIMARY KEY ("id")
+CREATE TABLE `ot_user_login_log` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '操作记录',
+  `app_no` varchar(20) DEFAULT NULL COMMENT '应用编号',
+  `ip_geo` varchar(80) DEFAULT NULL COMMENT 'IP来源',
+  `login_ip` varchar(40) DEFAULT NULL COMMENT '登录IP',
+  `ma_type` varchar(20) DEFAULT NULL COMMENT '小程序类型(wx|swan|my|tt|h5)',
+  `nick_name` varchar(40) NOT NULL COMMENT '用户昵称',
+  `uid` varchar(40) NOT NULL COMMENT '用户ID',
+  `unique_key` varchar(200) DEFAULT NULL COMMENT '唯一值(appNo:maType:(openid|phoneNo))',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户登录日志';
 
 -- ----------------------------
 -- Table structure for ot_user_ma_session
 -- ----------------------------
 DROP TABLE IF EXISTS `ot_user_ma_session`;
-CREATE TABLE "ot_user_ma_session" (
-  "id" varchar(40) NOT NULL COMMENT 'ID',
-  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
-  "app_no" varchar(20) NOT NULL COMMENT '应用编号',
-  "last_modified_time" datetime DEFAULT NULL COMMENT '最后修改时间',
-  "remark" varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
-  "ma_type" varchar(20) NOT NULL COMMENT '小程序类型(wx|swan|my|tt)',
-  "openid" varchar(200) NOT NULL COMMENT '小程序openid',
-  "session_key" varchar(120) DEFAULT NULL COMMENT '会话密钥',
-  "uid" varchar(40) DEFAULT NULL COMMENT '用户ID',
-  PRIMARY KEY ("id"),
-  UNIQUE KEY "UKh6w6ypj0jv2rvl4c4y21u54fg" ("app_no","ma_type","openid")
+CREATE TABLE `ot_user_ma_session` (
+  `id` varchar(40) NOT NULL COMMENT 'ID',
+  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `app_no` varchar(20) NOT NULL COMMENT '应用编号',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后修改时间',
+  `remark` varchar(400) DEFAULT NULL COMMENT '备注（修改记录)',
+  `ma_type` varchar(20) NOT NULL COMMENT '小程序类型(wx|swan|my|tt)',
+  `openid` varchar(200) NOT NULL COMMENT '小程序openid',
+  `session_key` varchar(120) DEFAULT NULL COMMENT '会话密钥',
+  `uid` varchar(40) DEFAULT NULL COMMENT '用户ID',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKh6w6ypj0jv2rvl4c4y21u54fg` (`app_no`,`ma_type`,`openid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='小程序会话密钥';
 
 /*quartz*/

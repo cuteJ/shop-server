@@ -24,6 +24,7 @@
 #export APP_OSS_URL=xxx
 #export APP_OSS_BUCKET=xxx
 
+# Linux 路径
 MS_HOME=/data/cuteJ/server
 MS_JAR=shop-server-mgt.jar #
 APP_NAME=shop-server-mgt #
