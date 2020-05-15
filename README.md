@@ -19,6 +19,11 @@
 ### 项目演示
  <a href="http://shop-web-mgt.onlythinking.com" target="_blank">**在线地址**</a>
 
+## 文档相关
+[Swagger](https://www.zzhjshop.com/shop_test/swagger-ui.html)
+[Docs Of Html](https://cutej.github.io/shop-server)
+[Docs Of Pdf](http://shop-mgt.zzhjshop.com/pdf/index.pdf)
+
 ### 项目结构
 
 为了方便合并和拆分项目，分两个模块：
