@@ -20,9 +20,9 @@
  <a href="http://shop-web-mgt.onlythinking.com" target="_blank">**在线地址**</a>
 
 ## 文档相关
-[Swagger](https://www.zzhjshop.com/shop_test/swagger-ui.html)
-[Docs Of Html](https://cutej.github.io/shop-server)
-[Docs Of Pdf](http://shop-mgt.zzhjshop.com/pdf/index.pdf)
+* [Swagger](https://www.zzhjshop.com/shop_test/swagger-ui.html)
+* [Docs Of Html (Html格式文档)](https://cutej.github.io/shop-server)
+* [Docs Of Pdf（Pdf格式文档）](http://shop-mgt.zzhjshop.com/pdf/index.pdf)
 
 ### 项目结构
 
