@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  shopServerMgt:
+    image: registry.cn-hangzhou.aliyuncs.com/cuteJ/shop-server-mgt
+    container_name: shop-server-mgt
+    ports:
+      - "8300:8300"
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "_root_xxx"
+      MYSQL_DATABASE: "cuteJ_shop"
+      MYSQL_USER: "cuteJ_shop"
+      MYSQL_PASSWORD: "cuteJ_shop123"
+
+  shopWebMgt:
+    image: registry.cn-hangzhou.aliyuncs.com/cuteJ/shop-web-mgt
+    container_name: shop-server-mgt
+    ports:
+      - "80:80"
+
+volumes:
+  mysql_data:
+    driver: local

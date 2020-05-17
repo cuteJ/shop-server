@@ -16,6 +16,11 @@
    该项目致力于为开发者提供一套快速系统搭建模版，（包含：系统用户，菜单，权限，调度任务，常量，数据字典等功能）
  以便开发人员专注于业务功能开发。
 
+### 项目教程
+
+* [开发安装使用](https://juejin.im/post/5ebfae146fb9a043491e6e66)
+
+
 ### 项目演示
  <a href="http://shop-web-mgt.onlythinking.com" target="_blank">**在线地址**</a>
 
