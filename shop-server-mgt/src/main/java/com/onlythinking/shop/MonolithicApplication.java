@@ -1,7 +1,7 @@
 package com.onlythinking.shop;
 
-import com.onlythinking.shop.configuration.CustomCommonsConfiguration;
 import com.onlythinking.commons.config.ApiRestWebMvcRegistrations;
+import com.onlythinking.shop.configuration.CustomCommonsConfiguration;
 import com.onlythinking.shop.core.configuration.ServerModuleConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

@@ -24,7 +24,6 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(AppCorsProperties.class)
-//@AutoConfigureBefore(CommonsModuleConfiguration.class)
 public class WebMvcConfiguration extends AbstractWebMvcConfiguration {
 
     private final AppCorsProperties properties;

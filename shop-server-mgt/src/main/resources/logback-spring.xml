@@ -84,6 +84,9 @@
   <logger name="com.onlythinking.shop.core.multipart.OrderedMultipartFilter" level="INFO"/>
   <!--<logger name="org.zalando.logbook" level="TRACE"/>-->
   <logger name="org.apache.shiro" level="DEBUG"/>
+  <logger name="javax.websocket" level="DEBUG"/>
+  <logger name="org.springframework.web.socket" level="DEBUG"/>
+
   <logger name="org.apache.ibatis" level="DEBUG">
     <appender-ref ref="STDOUT"/>
   </logger>

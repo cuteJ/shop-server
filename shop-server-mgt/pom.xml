@@ -460,6 +460,11 @@
       <version>${swagger2markup.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-websocket</artifactId>
+    </dependency>
+
     <!--test-->
     <dependency>
       <groupId>org.codehaus.janino</groupId>
