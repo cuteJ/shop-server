@@ -1,6 +1,8 @@
 # 管理系统
 该项目为【管理系统】后端部分
 
+>项目执行maven报错请查看：[issues/2](https://github.com/cuteJ/shop-server/issues/2)
+
 分支说明
 
 **1.x.x** 该分支提供基础模版  
