@@ -59,7 +59,10 @@ public class MenusInitializer implements Initializer {
       new SysMenuDto(APP_BRAND_MANAGER, "应用品牌", "brand_manager", "child", APP_MANAGER, 1, false),
 
       new SysMenuDto(USER_MANAGER, "用户管理", "/user", "user", null, 0, true),
-      new SysMenuDto(USER_LOGIN_MANAGER, "用户列表", "user_manager", "child", USER_MANAGER, 1, false)
+      new SysMenuDto(USER_LOGIN_MANAGER, "用户列表", "user_manager", "child", USER_MANAGER, 1, false),
+
+      new SysMenuDto(STATISTICS_MANAGER, "统计管理", "/statistics", "pc_statistics", null, 0, true),
+      new SysMenuDto(STATISTICS_CHART_MANAGER, "图表统计", "chart", "child", STATISTICS_MANAGER, 0, false)
     );
 
     @Override

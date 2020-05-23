@@ -26,7 +26,7 @@
     <!--Third lib-->
     <ot-mybatis-generator.version>1.0</ot-mybatis-generator.version>
     <ot-commons.version>1.0</ot-commons.version>
-    <app-oss-starter.version>1.0</app-oss-starter.version>
+    <app-oss-starter.version>1.0.0</app-oss-starter.version>
     <shiro-spring-boot-starter.version>1.4.0</shiro-spring-boot-starter.version>
     <logbook-spring-boot-starter.version>1.9.0</logbook-spring-boot-starter.version>
 

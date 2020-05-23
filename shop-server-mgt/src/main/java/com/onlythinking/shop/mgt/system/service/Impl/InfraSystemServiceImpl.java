@@ -135,7 +135,7 @@ public class InfraSystemServiceImpl implements InfraSystemService {
     public void saveOrUpdateSysUser(OtSysUserView dto) {
         OtSysUser entity = new OtSysUser();
         org.springframework.beans.BeanUtils.copyProperties(dto, entity);
-        entity.setAvatar(RandomStringUtils.randomNumeric(10));
+        entity.setAvatar(RandomStringUtils.randomNumeric(5));
         if (StringUtils.isNotBlank(dto.getPwd())) {
             entity.setPassword(EncryptionUtils.md5(dto.getPwd()));
         } else {

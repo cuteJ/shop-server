@@ -31,6 +31,10 @@ public interface PermissionsConstant {
     String USER_MANAGER = "userManager";
     String USER_LOGIN_MANAGER = "userLoginManager";
 
+    // 统计管理
+    String STATISTICS_MANAGER = "statisticsManager";
+    String STATISTICS_CHART_MANAGER = "chartManager";
+
     /**
      * Module: sys
      * Action: list save update remove lock grant export import

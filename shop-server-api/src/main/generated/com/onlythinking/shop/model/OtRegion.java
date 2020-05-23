@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * 地区数据
  * 
  * @author lixingping
- * Date 2020-05-07 16:48:33
+ * Date 2020-05-23 15:46:10
  */
 @Data
 @ApiModel("地区数据")
@@ -69,6 +69,12 @@ public class OtRegion implements Serializable {
      */
     @ApiModelProperty(value = "拼音")
     private String pinYin;
+
+    /**
+     * 简称
+     */
+    @ApiModelProperty(value = "简称")
+    private String shortName;
 
     private static final long serialVersionUID = 1L;
 }

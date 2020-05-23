@@ -23,5 +23,7 @@ public interface RegionService extends OtBasicService<OtRegion, OtRegionMapper> 
 
     List<SelectTree> getByDepth(int depth);
 
+    List<SelectTree> getByDepthShortName(int depth);
+
     void saveOrUpdateRegion(OtRegion dto);
 }

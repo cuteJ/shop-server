@@ -9,7 +9,8 @@
     jian_pin	jianPin,
     name	name,
     parent_id	parentId,
-    pin_yin	pinYin
+    pin_yin	pinYin,
+    short_name	shortName
   </sql>
   <select parameterType="java.lang.String" id="getByPK" resultType="com.onlythinking.shop.model.OtRegion" >
     select 
@@ -31,7 +32,8 @@
 			jian_pin,
 			name,
 			parent_id,
-			pin_yin
+			pin_yin,
+			short_name
 		)
 		values
 		(
@@ -42,7 +44,8 @@
 			#{jianPin,jdbcType=VARCHAR},
 			#{name,jdbcType=VARCHAR},
 			#{parentId,jdbcType=VARCHAR},
-			#{pinYin,jdbcType=VARCHAR}
+			#{pinYin,jdbcType=VARCHAR},
+			#{shortName,jdbcType=VARCHAR}
 		)
   </insert>
   <update id="updateBySelective" parameterType="java.util.Map" >
@@ -67,7 +70,10 @@
 				parent_id = #{parentId,jdbcType=VARCHAR},
 			</if>
 			<if test="pinYin != null">
-				pin_yin = #{pinYin,jdbcType=VARCHAR}
+				pin_yin = #{pinYin,jdbcType=VARCHAR},
+			</if>
+			<if test="shortName != null">
+				short_name = #{shortName,jdbcType=VARCHAR}
 			</if>
 			</set>
 			where id = #{id,jdbcType=VARCHAR}
@@ -94,7 +100,10 @@
 				parent_id = #{parentId,jdbcType=VARCHAR},
 			</if>
 			<if test="pinYin != null and pinYin != ''">
-				pin_yin = #{pinYin,jdbcType=VARCHAR}
+				pin_yin = #{pinYin,jdbcType=VARCHAR},
+			</if>
+			<if test="shortName != null and shortName != ''">
+				short_name = #{shortName,jdbcType=VARCHAR}
 			</if>
 			</set>
 			where id = #{id,jdbcType=VARCHAR}
@@ -128,6 +137,9 @@
 			<if test="pinYin != null and pinYin != ''">
 				and pin_yin = #{pinYin,jdbcType=VARCHAR}
 			</if>
+			<if test="shortName != null and shortName != ''">
+				and short_name = #{shortName,jdbcType=VARCHAR}
+			</if>
 		</trim>
 	</select>
   <select id="getOne" parameterType="java.util.Map" resultType="com.onlythinking.shop.model.OtRegion">
@@ -158,6 +170,9 @@
 			</if>
 			<if test="pinYin != null and pinYin != ''">
 				and pin_yin = #{pinYin,jdbcType=VARCHAR}
+			</if>
+			<if test="shortName != null and shortName != ''">
+				and short_name = #{shortName,jdbcType=VARCHAR}
 			</if>
 		</trim>
 	</select>
@@ -190,6 +205,9 @@
 			<if test="pinYin != null and pinYin != ''">
 				and pin_yin = #{pinYin,jdbcType=VARCHAR}
 			</if>
+			<if test="shortName != null and shortName != ''">
+				and short_name = #{shortName,jdbcType=VARCHAR}
+			</if>
 		</trim>
 	</select>
   <delete id="deleteInBatch" parameterType="java.util.List">
@@ -206,7 +224,8 @@
 			jian_pin,
 			name,
 			parent_id,
-			pin_yin
+			pin_yin,
+			short_name
 		)
 		values
 		<foreach collection="list" item="item" index="index" separator=",">
@@ -218,7 +237,8 @@
 			#{item.jianPin},
 			#{item.name},
 			#{item.parentId},
-			#{item.pinYin}
+			#{item.pinYin},
+			#{item.shortName}
 		)
 		</foreach>
 	</insert>

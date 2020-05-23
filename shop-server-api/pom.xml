@@ -41,6 +41,7 @@
 <!--          ot_user_login,-->
 <!--          ot_user_login_log,-->
 <!--          ot_user_ma_session-->
+          ot_region
         </generator.tableNames>
       </properties>
       <build>

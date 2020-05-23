@@ -49,6 +49,7 @@ public class RegionServiceImpl implements RegionService {
                   d.setJianPin(py[0]);
                   d.setPinYin(py[1]);
                   d.setFirstLetter(StringUtils.substring(py[1], 0, 1));
+                  d.setShortName(StringUtils.replaceAll(v.getValue(), "[\\u7701|\\u5e02|\\u81ea\\u6cbb\\u533a|\\u56de\\u65cf|\\u58ee\\u65cf|\\u7279\\u522b\\u884c\\u653f\\u533a]", ""));
                   return d;
               }).collect(Collectors.toList()));
         } else if (depth == 2) {
@@ -64,6 +65,7 @@ public class RegionServiceImpl implements RegionService {
                   d.setJianPin(py[0]);
                   d.setPinYin(py[1]);
                   d.setFirstLetter(StringUtils.substring(py[1], 0, 1));
+                  d.setShortName(StringUtils.replaceAll(v.getValue(), "[\\u7701|\\u5e02|\\u81ea\\u6cbb\\u533a|\\u56de\\u65cf|\\u58ee\\u65cf|\\u7279\\u522b\\u884c\\u653f\\u533a]", ""));
                   return d;
               }).collect(Collectors.toList())
             );
@@ -81,6 +83,7 @@ public class RegionServiceImpl implements RegionService {
                   d.setJianPin(py[0]);
                   d.setPinYin(py[1]);
                   d.setFirstLetter(StringUtils.substring(py[1], 0, 1));
+                  d.setShortName(v.getValue());
                   return d;
               }).collect(Collectors.toList())
             );
@@ -123,6 +126,13 @@ public class RegionServiceImpl implements RegionService {
     public List<SelectTree> getByDepth(int depth) {
         return regionMapper.getList(ImmutableMap.of("depth", depth)).stream().map(v ->
           new SelectTree(v.getId(), v.getName())
+        ).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SelectTree> getByDepthShortName(int depth) {
+        return regionMapper.getList(ImmutableMap.of("depth", depth)).stream().map(v ->
+          new SelectTree(v.getId(), v.getShortName())
         ).collect(Collectors.toList());
     }
 
